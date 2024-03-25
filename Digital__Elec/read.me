@@ -1,0 +1,134 @@
+
+
+
+~ Codes  * 
+		
+	8 4 2 1 -> weigths
+	0 1 0 0	-> binary 
+
+ 
+	~ Weighted -> every position ( value is weighted )
+			
+			0001 -> 1
+			0010 -> 2
+			0011 -> 3
+		
+		Every Value Represation With Weigths ***	
+
+			
+	~ Non-Weighted -> ( No Weights Present In Value ) 
+			
+			EX :  Gray Code  ~ 
+				
+
+				> 0 -> 0000
+				> 1 -> 0001
+				> 2 -> 0011
+				> 3 -> 0010
+
+	~ Self Complementry Codes  -> ( No Positional Value )
+	
+
+			Ex : Excess -3 
+
+				9 -> comp 0
+				8 -> comp 1 
+
+			
+
+			Dec	Excess-3
+			0	0011
+			1 	0100
+			2 	0101
+			3 	0110
+			4	0111
+			5	1000
+			6 	1001
+			7 	1010
+			8 	1011
+			9 	1100
+
+
+
+	~ Sequential Codes *
+		
+		:: Learn Xs-3 Code
+
+
+	~ Alphanumeric Codes -> (Ascii Codes Per Alphabets) 
+
+
+	~ Error Detecting -> ( Hamming Code )
+	
+
+
+~ Binary Coded Decimal *
+
+		$4 Bits BCD Representaion 
+
+	( 0 ) -> 0000
+	( 1 ) -> 0001
+	....
+	(9)  ->  1001
+	(10) ->	 0001 0000
+	(11) ->  0001 0001
+	(12) ->  0001 0010	
+					
+				 (8 4 2 1 - 8 4 2 1) 4 Bits Weigths 
+
+				# 0 0 0 1 - 0 0 0 1
+				    (1)        (1)   ->  (11)
+
+
+~ BCD Addtion *
+	
+	Read:: You Wanna Covert BCD ( 2 Digits ) -> Answer > 9 ( Please Add 6 Addition )		(Congratus BCD Finds)
+ 
+	(19) -> ( 0001  & 1001 ) 
+ 	(9) --> 1001
+	(10) -> 1010
+		
+	1 1 
+	0 1 0 0
+	0 1 1 1 
+	-------			Sum > 9 ( Add With 6 ) With Result 
+	1 0 1 1
+	+ 1 1 0
+	-------
+  0 0 0 1 - 0 0 0 1  > ( Succusfuly Converted BCD wITH ADDITION 6 )
+
+
+	
+~ Excess - 3 Code *
+
+	> DECIMAL	BCD	EXCESS-3 
+
+		0	0000	0011	> 9 binary With 1s Comp
+		1 	0001 	0100	> 8 binary  (copy)
+		2 	0010 	0101	> 7 binary  (copy)
+		3 	0011 	0110	> 6 binary  (copy)
+		4	0100	0111	> 5 binary ( copy)
+		5 	0101	1000	> 4 binary (copy)
+		6	0110	1001	> 3 binary (copy)
+		7 	0111 	1010	> 2 binary (copy)
+		8 	1000	1011	> 1 binary (copy)
+		9 	1001 	1100   	> 0 binary (copy)
+
+
+
+
+	        8	4 	3 
+	       		
+		1000	0100	0011
+		0011   	0011 	0011 -> (ADD 3 To Convert In Excess - 3)
+		-------------------
+		1011    0111	 0110	
+
+
+
+~ Gray Code *
+
+	:::Read ( No Weighted Codes )
+	
+
+	

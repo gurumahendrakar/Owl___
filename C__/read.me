@@ -1,0 +1,93 @@
+
+#-----------------------------------IMPORTANT-----------------------------------------------
+
+        --> execl() ---> replace process own process ;
+	--> fork() ----> fork() only creates ( process ,registers,stack ) . All Others Things Are Copy
+
+	--> pipes   
+			-> IPC ( interprocess communication )    
+	---> fifo   
+
+		WHY WEE NEED THIS FAILURE PROGRAMS;
+
+	wait(NULL) --> if return 1 -> 256;
+		       if return 2 -> 512;
+		       if return 3 -> 768; 
+
+	---> WIFEXITED(status) --> ( error gives 1 otherwise 0 )
+	---> WEXITSTATUS(status) ---> ( exect return number gives )  return 2; --> not 2 * 256 
+	
+	
+
+        --> pthread_t th --> th ( unsigned long thread_id ) 
+        
+
+	
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+::: Note   
+        memcpy   --> ( Copy Data With Another Buffer)
+        memmove  --> ( Move Data With Another Buffer)
+        
+
+        void*    --> ( That`s Helps To How Many Byte Read In Pointer )
+        srand(TIME(NULL)) --> Its Help`s To Different Random Numbers With Time
+            rand();
+       
+        --String Formatter ::::  That`s Tell How Many Bytes Extract From Memory 
+
+                %p ---> pointer 
+                %d ---> digit 
+                %u ---> unsigned int
+                %c ---> char
+                %o ---> octal
+                %x,X ---> Hex
+                %f --->  float
+                %s ---> string
+
+                %hu ---> unsigned short int 
+                %hd ---> short int
+                %lf ---> long double 
+                %e ---> Scientific noation
+                %G ---> Shorteset representation ( floats & scientfic noation )
+
+                llu ---> long long unsigned int 
+                lld ---> long long int 
+                %zu ---> size_t  (How Many Your Operating System Supoort like 32bit - 64bit )
+        
+
+        structs ---> Create Objects In Memory 
+        unions ---> Create Object in Memory But ( All Property Shared A Memory )
+
+        struct union {
+                int x;    ---> 4 byte memory only ( x & y Memory was shared )
+                double y;
+             }              
+
+
+        #include <crblib.h>
+
+        _crtDumpMemoryLeaks()  ---> ( put it your last in your code )
+
+        malloc ---> allocated memroy bytes
+        calloc ---> allocated memroy bytes
+        relloc ---> ( free old memory creates new one )
+        free    ---> ( free memory )
+
+
+        :::imp::: --> undefined behavior ---> (You Didn`t Expect Result This is  Undefined Behavior)
+
+        binaryfiles work ---> fwrite fread 
+        normaalfiles work ---> fprint,fscanf,fgets,sscanf_s,rename,remove 
+        workingwith string ---> getchar,getc,get ---> read stdin stream only 1 byte 
+
+        ungetc --> goes stdin stream 1 backward and put in character
+
+
+
+        

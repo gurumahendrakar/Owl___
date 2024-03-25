@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.rozmichelle.com/pipes-forks-dups/ -->
+<html lang="en-US" class=" js rgba backgroundsize boxshadow textshadow opacity csstransitions fontface csstransforms no-csstransforms3d"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pipes, Forks, &amp; Dups: Understanding Command Execution and Input/Output Data Flow | rozmichelle</title>
+
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <link rel="pingback" href="https://www.rozmichelle.com/xmlrpc.php">
+
+    
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="rozmichelle » Feed" href="https://www.rozmichelle.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="rozmichelle » Comments Feed" href="https://www.rozmichelle.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="rozmichelle » Pipes, Forks, &amp; Dups: Understanding Command Execution and Input/Output Data Flow Comments Feed" href="https://www.rozmichelle.com/pipes-forks-dups/feed/">
+<script type="text/javascript" async="" src="./Pipes, Forks, &amp; InputOutput_files/js"></script><script async="" src="./Pipes, Forks, &amp; InputOutput_files/analytics.js.download"></script><script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.rozmichelle.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3.3"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-quicklatex-format-css" href="./Pipes, Forks, &amp; InputOutput_files/quicklatex-format.css" type="text/css" media="all">
+<link rel="stylesheet" id="sbi_styles-css" href="./Pipes, Forks, &amp; InputOutput_files/sbi-styles.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Pipes, Forks, &amp; InputOutput_files/style.min.css" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="jquery.fancybox-css" href="./Pipes, Forks, &amp; InputOutput_files/jquery.fancybox.css" type="text/css" media="all">
+<link rel="stylesheet" id="reactpress-css" href="./Pipes, Forks, &amp; InputOutput_files/reactpress-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="sugarspice-fonts-css" href="./Pipes, Forks, &amp; InputOutput_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="sugarspice-style-css" href="./Pipes, Forks, &amp; InputOutput_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="sugarspice-icofont-css" href="./Pipes, Forks, &amp; InputOutput_files/icofont.css" type="text/css" media="all">
+<link rel="stylesheet" id="photonic-slider-css" href="./Pipes, Forks, &amp; InputOutput_files/splide.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="photonic-lightbox-css" href="./Pipes, Forks, &amp; InputOutput_files/spotlight.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="photonic-css" href="./Pipes, Forks, &amp; InputOutput_files/photonic.min.css" type="text/css" media="all">
+<style id="photonic-inline-css" type="text/css">
+/* Dynamically generated CSS */
+.photonic-panel { background:  rgb(17,17,17)  !important;
+
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+ }
+.photonic-flickr-stream .photonic-pad-photosets { margin: 10px; }
+.photonic-flickr-stream .photonic-pad-galleries { margin: 10px; }
+.photonic-flickr-stream .photonic-pad-photos { padding: 5px 10px; }
+.photonic-google-stream .photonic-pad-photos { padding: 5px 10px; }
+.photonic-zenfolio-stream .photonic-pad-photos { padding: 5px 10px; }
+.photonic-zenfolio-stream .photonic-pad-photosets { margin: 5px 10px; }
+.photonic-smug-stream .photonic-pad-albums { margin: 10px; }
+.photonic-smug-stream .photonic-pad-photos { padding: 5px 10px; }
+.photonic-random-layout .photonic-thumb { padding: 2px}
+.photonic-masonry-layout .photonic-thumb { padding: 2px}
+.photonic-mosaic-layout .photonic-thumb { padding: 2px}
+
+</style>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/jquery.min.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/jquery-migrate.min.js.download" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/jquery.fancybox.js.download" id="jquery.fancybox-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/jquery.easing.js.download" id="jquery.easing-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/reactpress-public.js.download" id="reactpress-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/wp-quicklatex-frontend.js.download" id="wp-quicklatex-frontend-js"></script>
+<link rel="https://api.w.org/" href="https://www.rozmichelle.com/wp-json/"><link rel="alternate" type="application/json" href="https://www.rozmichelle.com/wp-json/wp/v2/posts/7285"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.rozmichelle.com/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.3.3">
+<link rel="canonical" href="https://www.rozmichelle.com/pipes-forks-dups/">
+<link rel="shortlink" href="https://www.rozmichelle.com/?p=7285">
+<link rel="alternate" type="application/json+oembed" href="https://www.rozmichelle.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.rozmichelle.com%2Fpipes-forks-dups%2F">
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    var select = $('a[href$=".bmp"],a[href$=".gif"],a[href$=".jpg"],a[href$=".jpeg"],a[href$=".png"],a[href$=".BMP"],a[href$=".GIF"],a[href$=".JPG"],a[href$=".JPEG"],a[href$=".PNG"]');
+    select.attr('rel', 'fancybox');
+    select.fancybox();
+  });
+</script>
+                                                                                                                                                                         
+<style>
+a, a:visited { color:#36AB8A; }
+.entry-meta a:hover { color:#36AB8A; }
+#nav-wrapper .ribbon-left, #nav-wrapper .ribbon-right { background-image: url("https://www.rozmichelle.com/wp-content/themes/roz2014/images/ribbon-violet.png"); }a:hover, a:focus, nav#main-nav > ul > li > a:hover { color: rgba(54, 171, 138, 0.7); }nav#main-nav > ul > li.current_page_item > a, nav#main-nav > ul > li.current_page_ancestor > a, nav#main-nav > ul > li.current-menu-item > a { color:#36AB8A; }
+.widget-title em { color:#A977B9; }
+h1.entry-title { color:#A977B9; }
+.widget_calendar table td#today { background:#A977B9; }
+blockquote cite { color:#A977B9; }
+blockquote p { color:#A977B9; }
+blockquote { border-left-color: #A977B9;} {}
+.box1 { border-color: #A977B9; color: #A977B9;} {}
+.button, button, input[type="submit"], input[type="reset"], input[type="button"] { color: #FFF; background: #36AB8A;}  {}
+.button:hover, button:hover, a.social-icon:hover , input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover { background: rgba(54, 171, 138, 0.7);} </style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #d0cfd2; }
+</style>
+	<link rel="preload" as="style" href="./Pipes, Forks, &amp; InputOutput_files/prettify.css">
+	<link rel="stylesheet" href="./Pipes, Forks, &amp; InputOutput_files/zlrecipe-std.css" type="text/css">
+	<script type="text/javascript" async="" src="./Pipes, Forks, &amp; InputOutput_files/zlrecipe_print.js.download"></script> 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-512962-1', 'auto');
+
+  ga('send', 'pageview');
+
+</script>
+<link rel="stylesheet" type="text/css" href="./Pipes, Forks, &amp; InputOutput_files/prettify.css"><script src="./Pipes, Forks, &amp; InputOutput_files/wp-emoji-release.min.js.download" defer=""></script><style type="text/css">undefined</style></head>
+
+<body class="post-template-default single single-post postid-7285 single-format-standard custom-background">
+<header id="header" class="site-header cbp-af-header-shrink" role="banner">
+		<div class="site-branding">
+                <h1 class="site-title"><a href="https://www.rozmichelle.com/" rel="home">rozmichelle</a></h1>
+        <h2 class="site-description">The personal blog of creative soul Roslyn Michelle Cyrus McConnell</h2>
+        		</div>
+
+        <div id="nav-wrapper">
+            <nav id="main-nav" class="main-navigation" role="navigation">
+
+                <div class="skip-link"><a class="screen-reader-text" href="https://www.rozmichelle.com/pipes-forks-dups/#content">Skip to content</a></div>
+
+                <ul id="nav" class="menu l_tinynav1"><li id="menu-item-11206" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-11206"><a href="https://www.rozmichelle.com/">Home</a></li>
+<li id="menu-item-11205" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11205"><a href="https://www.rozmichelle.com/about/">About Me</a></li>
+<li id="menu-item-11201" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11201"><a href="https://www.rozmichelle.com/journal/">Journal</a></li>
+<li id="menu-item-11204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11204"><a href="https://www.rozmichelle.com/poetry/">Poetry</a></li>
+<li id="menu-item-11200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11200"><a href="https://www.rozmichelle.com/portfolio/">Portfolio</a></li>
+<li id="menu-item-11202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11202"><a href="https://www.rozmichelle.com/guestbook/">Guestbook</a></li>
+<li id="menu-item-11203" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11203"><a href="https://www.rozmichelle.com/contact/">Contact</a></li>
+</ul><select id="tinynav1" class="tinynav tinynav1"><option>Menu</option><option value="https://www.rozmichelle.com">Home</option><option value="https://www.rozmichelle.com/about/">About Me</option><option value="https://www.rozmichelle.com/journal/">Journal</option><option value="https://www.rozmichelle.com/poetry/">Poetry</option><option value="https://www.rozmichelle.com/portfolio/">Portfolio</option><option value="https://www.rozmichelle.com/guestbook/">Guestbook</option><option value="https://www.rozmichelle.com/contact/">Contact</option></select>
+            </nav><!-- #site-navigation -->
+        </div>
+
+	</header><!-- #header -->
+
+<div id="page" class="hfeed site">
+
+	
+	<div id="main" class="site-main">
+
+ 
+        <div id="primary" class="content-area">  
+            <div id="content" class="site-content" role="main">
+				<div class="post_holder">
+            
+                
+<article id="post-7285" class="post-7285 post type-post status-publish format-standard has-post-thumbnail hentry category-computer-science tag-unix">
+    
+			<a href="https://www.rozmichelle.com/pipes-forks-dups/" class="th image-wrap" title="Pipes, Forks, &amp; Dups: Understanding Command Execution and Input/Output Data Flow"><img width="2840" height="684" src="./Pipes, Forks, &amp; InputOutput_files/pipefinal-1.png" class="attachment-full size-full wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://www.rozmichelle.com/wp-content/uploads/pipefinal-1.png 2840w, https://www.rozmichelle.com/wp-content/uploads/pipefinal-1-300x72.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipefinal-1-768x185.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipefinal-1-640x154.png 640w" sizes="(max-width: 2840px) 100vw, 2840px"></a>	
+	    
+    <header class="entry-header">
+		<h1 class="entry-title centered"><a href="https://www.rozmichelle.com/pipes-forks-dups/" rel="bookmark">Pipes, Forks, &amp; Dups: Understanding Command Execution and Input/Output Data Flow</a></h1>
+
+		<div class="entry-meta">
+			<span class="byline"> by <span class="author vcard"><a href="https://www.rozmichelle.com/author/rozroz/" title="View all posts by Roslyn McConnell" rel="author">Roslyn McConnell</a></span></span> // <span class="posted-on"><a href="https://www.rozmichelle.com/pipes-forks-dups/" title="4:24 am" rel="bookmark"><time class="entry-date published" datetime="2017-11-08T04:24:32-07:00">November 8, 2017</time></a></span> // <span class="comments"><a href="https://www.rozmichelle.com/pipes-forks-dups/#comments"><i class="icon-comment"></i> 30 Comments</a></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+    
+	<div class="entry-content">
+        <p style="text-align: center;"><strong>Note: a basic familiarity with Unix commands and C/C++ is necessary to understand this post. My goal is to explain the flow of data between processes when running commands. If you want to jump directly to the pipeline stuff, click <a href="https://www.rozmichelle.com/pipes-forks-dups/#pipelines">here</a>.</strong></p>
+<p>I’m currently enrolled in a systems programming class at Stanford (CS110:&nbsp;Principles of Computer Systems). It is the second systems class I’ve taken (the first was CS107 which teaches C and focuses on understanding pointers and memory management). This class focuses mainly on the inner workings of the operating system, using C and C++ to teach us concepts like process management, program execution, and handling data. While I enjoyed and quickly grasped the concepts taught in CS107, I’ve had a harder time understanding the material in CS110. The class itself is extremely interesting and well-taught, but my main pain point has been understanding the way processes share data and how input and output work across commands entered in the terminal. In the last few days, however, I finally found clarity when I started creating diagrams to model process behavior and the path that data takes as it travels from one command to another. I’d like to share what I’ve learned with you. In this post, we’ll go over how Unix commands pass data to each other via pipes and input/output redirection and I’ll illustrate what actually happens to the flow of data when a command is executed.</p>
+<h1>File Descriptors</h1>
+<p>Let’s start out with a basic “type something into the keyboard, press enter, and get a result” model of running a single command in the terminal with no input/output redirection. Unix associates input with the terminal keyboard and output with the terminal display by default. Unix is famous for modeling pretty much everything in the computer as a file, including the keyboard and monitor. Thus writing to the “display” is really&nbsp;just writing to the file that manages the display of data on the screen. Similarly, reading data from the keyboard means reading data from the file that represents the keyboard. In the context of this discussion, we’ll refer to input and output as text data that goes into and out of a process.</p>
+<p>Data flows via streams that transfer bytes from one area to another. There are three default input/output (I/O) streams: <strong>standard input (stdin)</strong>, <strong>standard output (stdout)</strong>, and <strong>standard error (stderr)</strong>. By default, these streams each have a specific file descriptor. A file descriptor is an integer that is associated with an open file (the workings of which are beyond the scope of this discussion), and processes use file descriptors to handle data. The three default streams have the following file descriptor numbers: stdin = 0, stdout = 1, and stderr = 2. File descriptors are stored in a file descriptor table, and <span style="text-decoration: underline;">every process has its own file descriptor table</span> (with 0, 1, and 2 created and mapped to their appropriate streams by default when the process is created). Each stream has no idea where the data sent to or read from its descriptor comes from or goes to; the streams simply deal with the file descriptors, not the data sources themselves. The process only needs to handle the file descriptor, not the file itself; the kernel safely manages the file.</p>
+<p>In addition to 0, 1, and 2, processes use other file descriptors as necessary. The lowest unused (unopen) file descriptor is always used when a new file descriptor is assigned. Thus file descriptor 3 is usually first in line to be used after 0, 1, and 2 are set up by default.</p>
+<h1>Data Flow</h1>
+<p>Now we are ready to talk about data flow in depth. When we run commands in the terminal, any input and output need to be handled appropriately. The process that gets created for each command needs to know what data, if any, to take in as input and possibly what data to output. Each command’s process also needs to know where to send and receive such data. To represent the flow of data in (via stdin from the keyboard by default) and out (via stdout to the terminal by default, and also via stderr if something goes wrong), I’ll use diagrams like the one below:</p>
+<div id="attachment_7354" class="wp-caption aligncenter" style="width: 400px"><img decoding="async" class="wp-image-7354" src="./Pipes, Forks, &amp; InputOutput_files/pipe10-640x131.png" alt="" width="400" height="82" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe10-640x131.png 640w, https://www.rozmichelle.com/wp-content/uploads/pipe10-300x62.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe10-768x158.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipe10.png 1014w" sizes="(max-width: 400px) 100vw, 400px"><p class="wp-caption-text">Conceptual data flow for the standard input (0) and output (1) streams</p></div>
+<p>The above figure represents the default setup of the input and output streams. The keyboard passes data to the program that runs the command (from the command’s perspective, it receives input via stdin), and that program sends output to the terminal via stdout. I represent the flow of data from left to right. I also use the words “in” and “out” to represent data that goes into one area and out of another area, respectively. Although in this case “in” and “out” are associated with stdin and stdout respectively, this will not necessarily be the case in future diagrams. Thus I put the file descriptor numbers next to the associated “file” that corresponds to the relevant “in”/”out” action&nbsp;to make it clear which file descriptor is being used for which purpose. Generally, data flowing “into” something is considered input (and is being&nbsp;<strong>read</strong> in from a source via a file descriptor)&nbsp;and data flowing “out” of something is considered output (and is being <strong>written</strong> out to a source via a file descriptor). Put another way: <strong>input is read from somewhere; output is written somewhere</strong>. This mental model will prove helpful in future diagrams that are more complex.</p>
+<p>One thing to note is that there are actually two streams that can write output to the terminal by default: stdout and stderr. The stderr stream is used when something goes wrong when trying to execute a command. For example, the following <span class="inlinecode">ls dir_x</span>&nbsp;command in my terminal tries to list the contents of the nonexistent directory dir_x:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span style="color: #339966;"><span class="pln"><span class="pln">$</span></span></span></strong><span class="pln"><span class="pln"> ls dir_x
+ls</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> cannot access dir_x</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> </span></span><span class="typ"><span class="typ">No</span></span><span class="pln"><span class="pln"> such file </span></span><span class="kwd"><span class="kwd">or</span></span><span class="pln"><span class="pln"> directory</span></span></code></pre>
+<p>In this example, the stream that is used to display the second line is actually stderr, not stdout. Since stderr also goes to the terminal by default, we see the error message in the terminal. If the directory existed, then stdout would output the directory’s contents to the screen.</p>
+<p>Here is an updated diagram that shows the output ends of the stream for both stdout and stderr:</p>
+<div id="attachment_7355" class="wp-caption aligncenter" style="width: 390px"><img decoding="async" class="wp-image-7355" src="./Pipes, Forks, &amp; InputOutput_files/pipe11-640x129.png" alt="" width="390" height="79" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe11-640x129.png 640w, https://www.rozmichelle.com/wp-content/uploads/pipe11-300x61.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe11-768x155.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipe11.png 1010w" sizes="(max-width: 390px) 100vw, 390px"><p class="wp-caption-text">Conceptual data flow for the standard input (0), output (1), and error (2) streams</p></div>
+<p>Remember that the word “out” simply means output, and the file descriptor associated with each output is shown next to it. Now that you understand that stderr exists and can be used, I’ll actually leave it out of future data stream diagrams unless an example specifically uses stderr. Just remember that it exists!</p>
+<p>Now we can explore data flow&nbsp;using commands. Some commands both read input and write output, but others only do one or neither. We’ll explore different cases, but first, let’s discuss what input really means here. Technically, from the shell’s perspective (the shell processes the command line that is given to the terminal), anything typed into the keyboard (including the command itself) is “input” in the general sense, but we are dealing specifically with the input and output that commands need in order for the processes that run the commands to transfer data to and from files (including the keyboard and display). Command arguments that are options are really read in from the command line (as an argument array); actual input is read in from an open file that is associated with a file descriptor. Thus I define the input to a command as data that is specifically passed in using stdin (or another repurposed file descriptor that can be read from), whether it is typed in via the keyboard, redirected via I/O redirection (explained later), or possibly passed to the command as a file argument (versus an option argument). If a file is passed as an argument, then I consider it input if the process will actually read or manipulate the <strong>contents</strong> of that file (e.g. to sort the contents), versus simply referring to the file itself (e.g. to move or rename it).</p>
+<p>As a side note, command line option arguments are the result of another Unix design choice that allows behavior modification of an executed command to be passed in separately from the received input. Keeping the arguments and input separate makes life easier when pipes are involved.</p>
+<p>Now let’s look at some examples. To illustrate a command that can have no input but has output, consider <span class="inlinecode">ls</span>, which lists all the files in the current directory:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> ls
+dir1
+file1
+file2</span></span></code></pre>
+<p>This can be visualized as follows:</p>
+<div id="attachment_7356" class="wp-caption aligncenter" style="width: 200px"><img decoding="async" loading="lazy" class="wp-image-7356" src="./Pipes, Forks, &amp; InputOutput_files/pipe12.png" alt="" width="200" height="165" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe12.png 542w, https://www.rozmichelle.com/wp-content/uploads/pipe12-300x247.png 300w" sizes="(max-width: 200px) 100vw, 200px"><p class="wp-caption-text">The ls command.</p></div>
+<p>If a command doesn’t accept input from stdin, then the data passed to such a command will simply be ignored by the program that runs the command since it was not written to handle input data. For example, <span class="inlinecode">&lt; words.txt ls</span> will list the files and directories in the current directory and ignore the input that was redirected into stdin (this uses I/O redirection, which I’ll explain later).</p>
+<p>Let’s look at a command that, if all goes well, takes no input and gives no output: <span class="inlinecode">mv</span>, which can be used to move or rename files. If I give it the name of a file or directory that can be moved or renamed successfully, then no data is output via stdout or stderr. Remember that since this file’s contents aren’t being read or used in any way, the file that is passed in is not considered input. In a successful call to this command, I’d have this very simple diagram:</p>
+<div id="attachment_7323" class="wp-caption aligncenter" style="width: 140px"><img decoding="async" loading="lazy" class="wp-image-7323" src="./Pipes, Forks, &amp; InputOutput_files/pipe-mvout-300x149.png" alt="" width="140" height="70" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe-mvout-300x149.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe-mvout.png 402w" sizes="(max-width: 140px) 100vw, 140px"><p class="wp-caption-text">No input or output</p></div>
+<p>If, however, I use <span class="inlinecode">mv</span> incorrectly such that an error occurs, then I will have output to stderr:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span style="color: #339966;"><span class="pln"><span class="pln">$</span></span></span></strong><span class="pln"><span class="pln"> mv
+mv</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> missing file operand
+</span></span><span class="typ"><span class="typ">Try</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'mv --help'</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> more information</span></span><span class="pun"><span class="pun">.</span></span></code></pre>
+<div id="attachment_7357" class="wp-caption aligncenter" style="width: 330px"><img decoding="async" loading="lazy" class="wp-image-7357" src="./Pipes, Forks, &amp; InputOutput_files/pipe13-640x299.png" alt="" width="330" height="154" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe13-640x299.png 640w, https://www.rozmichelle.com/wp-content/uploads/pipe13-300x140.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe13-768x359.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipe13.png 920w" sizes="(max-width: 330px) 100vw, 330px"><p class="wp-caption-text">Calling mv with no arguments</p></div>
+<p>Let’s make things more interesting. One of my favorite examples of a command that both reads input and writes output is&nbsp;<span class="inlinecode">sort</span>. When used with no file arguments and no input redirection, the terminal waits for the user to enter the strings to sort (one string per line). Once the user types Ctrl-D (which closes the write end of the communication channel that connects the keyboard to the stdin of the <span class="inlinecode">sort</span> process), the process running&nbsp;<span class="inlinecode">sort</span> will know that all desired strings have been entered. Thus these strings are passed via stdin into the process that runs the command, sorted by said process, and then written to the terminal via stdout. Pretty nifty! Here’s sample input/output:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> sort
+</span></span><strong><span class="pln"><span class="pln">cherry
+banana
+apple</span></span></strong><span class="pln"><span class="pln">
+apple
+banana
+cherry</span></span></code></pre>
+<p>The bolded strings are user input and the strings that follow represent the sorted output. Here’s the data flow for this example:</p>
+<div id="attachment_7358" class="wp-caption aligncenter" style="width: 340px"><img decoding="async" loading="lazy" class="wp-image-7358" src="./Pipes, Forks, &amp; InputOutput_files/pipe14-640x317.png" alt="" width="340" height="168" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe14-640x317.png 640w, https://www.rozmichelle.com/wp-content/uploads/pipe14-300x148.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe14-768x380.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipe14.png 918w" sizes="(max-width: 340px) 100vw, 340px"><p class="wp-caption-text">The sort command. Input is typed into the keyboard, then the output is displayed in sorted order.</p></div>
+<p>Note that <span class="inlinecode">sort</span> can also take a filename argument to get input from the specified file instead of waiting for data to be entered by the user (for example, <span class="inlinecode">sort words.txt</span>), which follows our definition of input since it is a file and not an option argument like in <span class="inlinecode">sort -r</span>. In addition,&nbsp;<span class="inlinecode">sort</span>&nbsp;can take input via input redirection, which I’ll explain later.</p>
+<p><a name="pipelines"></a>Now that we understand the general idea of data flow from stdin to stdout or stderr, we can discuss how to control the flow of input and output. I’ll cover two ways to do this: using pipes, which allow the output of one process to be passed as input into another process, and using I/O redirection, which allows files to be the source and destination of data instead of the default keyboard and terminal. Fun stuff! Let’s dive right in.</p>
+<h1>Introducing Pipes</h1>
+<p>Unix has a simple yet valuable design philosophy, as explained by Doug McIlroy,&nbsp;the inventor of the Unix pipe:</p>
+<blockquote><p>“Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.”</p></blockquote>
+<p>The concept of a pipe is extremely powerful. Pipes allow data from one process to be passed to another (via unidirectional data flow) so that commands can be chained together by their streams. This allows commands to work together to achieve a larger goal. This chaining of processes can be represented by a pipeline<strong>:</strong>&nbsp;commands in a pipeline are connected via pipes, where data is shared between processes by flowing from one end of the pipe to the other.&nbsp;Since each command in the pipeline is run in a separate process, each with a separate memory space, we need a way to allow those processes to communicate with each other. This is is exactly the behavior that the&nbsp;<span class="inlinecode">pipe()</span>&nbsp;system call provides.</p>
+<p>Implementation-wise, pipes are actually just buffered streams that are associated with two file descriptors that are set up so that the first one can read in data that is written to the second one. Specifically, in the code written to handle the execution of commands in a pipeline, an array of two integers is created and a <span class="inlinecode">pipe()</span> call populates the array with two available file descriptors (usually the lowest two values available) such that the first file descriptor in the array can read in data written to the second.</p>
+<p>Physical pipes are naturally a great analogy for this abstraction. We can think of the data stream that starts in one process as water in an isolated environment, and the only way to allow the water to flow to the environment of the next process is to connect the environments with a pipe. In this way, the water (data) flows from the first environment (process) into the pipe, filling up the pipe with all its water and then draining its water into the other environment. This data flow is exactly what I try to capture in the diagram for the following pipeline example, <span class="inlinecode">sort | grep ea</span>:</p>
+<div id="attachment_7451" class="wp-caption aligncenter" style="width: 630px"><img decoding="async" loading="lazy" class="wp-image-7451" src="./Pipes, Forks, &amp; InputOutput_files/pipe-1.png" alt="" width="630" height="166" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe-1.png 2000w, https://www.rozmichelle.com/wp-content/uploads/pipe-1-300x79.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe-1-768x202.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipe-1-640x168.png 640w" sizes="(max-width: 630px) 100vw, 630px"><p class="wp-caption-text">sort | grep ea</p></div>
+<p>Let’s break this down piece by piece. The <span class="inlinecode">sort</span> command, like the previous example, waits for input from the user (who enters three strings to sort) via stdin (file descriptor 0). Next, the strings are sorted and sent as output via stdout which is fed into the pipe.&nbsp;It does this by allowing stdout to feed data to the left end of the pipe (file descriptor 4) instead of to the terminal. I’m leaving out a detail here but this process is explained in more depth later in this post.</p>
+<p>Before we continue, here’s an important detail: remember when I mentioned that each process gets its own file descriptor table? Well, since each command in the pipeline is run in a separate process, each command has its own version of the file descriptors, including its own stdin, stdout, and stderr. This means that the 0 shown on the left side of the diagram belongs to the process running <span class="inlinecode">sort</span> and&nbsp;is thus in a different file descriptor table than the 1 shown on the right, which belongs to the process running <span class="inlinecode">grep</span>. However, since the streams are set up to send data beyond process boundaries, the end result is that data ends up where it belongs as long as it was properly passed down the pipeline.</p>
+<p>Moving on: now that the&nbsp;<span class="inlinecode">sort</span>&nbsp;command has a sorted list of strings as output, it must pass it through the created pipe to communicate the data to the next process, <span class="inlinecode">grep</span>. Ignoring file descriptors 3 and 4 for a moment, look at the “in” and “out” words: we see that data flows <span style="color: #6262b3;"><strong>out of</strong></span>&nbsp;the&nbsp;<span class="inlinecode">sort</span> process and <span style="color: #a8873b;"><strong>into</strong></span> the pipe, where it then is passed <span style="color: #6262b3;"><strong>out of</strong></span>&nbsp;the pipe and&nbsp;<span style="color: #a8873b;"><strong>into</strong></span> the grep process. “In” and “out” are phrased based on the context they are used in: either inside the pipe or outside of it.</p>
+<p>With that in mind, we can now discuss the file descriptors handed out by the&nbsp;<span class="inlinecode">pipe()</span> call. Assume that in the code that executes the commands in the pipeline, the&nbsp;<span class="inlinecode">pipe()</span> call populates a file descriptor array {3, 4} such that data written to 4 can be read from 3. It really doesn’t matter what these numbers are or even that they are in increasing order. Imagine that the array is&nbsp;{pickle, mickeymouse} if that helps; the given values only matter to the process, but the purpose of the file descriptors matters to the data! The purpose of each file descriptor depends on which index each is in the array.</p>
+<p>There’s a <strong>very</strong> important concept to grasp here, one that took me a while to finally understand (and that didn’t happen until I created these diagrams because of the way my visual brain works). Recall that in my mental model, data flows from left to right in the diagrams. The file descriptors in the array are set up so that what is written to 4 can be read from 3, so you might be wondering why 4 is shown on the left side of the pipe in the image above and 3 is on the right, versus the other way around. The key thing to understand is that <strong>the read and write actions defined by a <span class="inlinecode">pipe()</span> call are from the perspective of the <span style="text-decoration: underline;">two processes using the pipe</span>, not the pipe itself!</strong>&nbsp;Thus when&nbsp;the&nbsp;<span class="inlinecode">pipe()</span> call defines 4 to be the writable end of the pipe, it means that it is the end of the pipe that the <strong>first&nbsp;command’s&nbsp;process</strong> writes output to&nbsp;so that the pipe itself receives that data as input. It does <strong>not</strong> mean the opposite: that 4 is the side of the pipe where the pipe writes out data, which would tempt you to label the right side of the pipe as 4.&nbsp;Similarly, 3 being the readable end of the pipe means that it is the end of the pipe that the <strong>second command’s process</strong> reads data from. It’s all about context! :)</p>
+<p>Thus the data is passed to the pipe, where it sits until all of the data is received so it can drain itself out to the <span class="inlinecode">grep</span> process. As the last and hopefully relatively easy step, the process running <span class="inlinecode">grep</span> searches the input it received from the pipe’s output for lines that contain “ea”. It then uses its stdout stream to output the matched strings to the terminal. All done! Not bad for our first pipeline walkthrough! Next, we’ll dive even deeper into understanding how code can execute these processes. Our understanding of how <span class="inlinecode">pipe()</span> works is, in my opinion, half the battle. Understanding <span class="inlinecode">fork()</span> and <span class="inlinecode">dup2()</span> is the other half. Let’s see how these functions work!</p>
+<h1>Running Commands in a Pipeline</h1>
+<p>In the diagrams we’ve seen so far, pipes were used when passing data from one command’s process to another, but we haven’t discussed the hierarchy of processes that run such commands. In class, we learned to write programs such that every command is executed in a child process versus in the parent process (the calling process). Typically, the parent does any required setup and then creates a child process via a <span class="inlinecode">fork()</span> call, which creates a clone of the parent’s memory state and file descriptors. Thus the child ends up with an independent copy of the variables and file descriptors that existed in the parent at the time of the <span class="inlinecode">fork()</span> call. After the <span class="inlinecode">fork()</span> call, changes to the parent process will not be visible to the child process and vice versa.</p>
+<p>This children-execute-commands pattern seems unnecessary for executing a single command since we could simply run the command in the parent without creating a child, but when you think about what it takes to make the&nbsp;code generic enough to work for both a single command and multiple commands in a pipeline, then it makes sense to always have a different child process execute each command. There are exceptions to this rule, such as running a built-in command which can simply run in the parent, but for this discussion, we’ll assume that all commands are executed in child processes.</p>
+<p>Let’s look at a pedantic example of some C code that runs the <span class="inlinecode">sort</span> command. In this example, input is printed directly to a file descriptor using <span class="inlinecode">dprintf()</span>&nbsp;to show you a case where a pipe is used to send data from the parent to the child. This is a simplified version of sample code provided to the class by our instructor, Jerry:</p>
+<pre class=" prettyprinted" style=""><code class=" prettyprinted" style=""><span class="com"><span class="com">#include</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">&lt;unistd.h&gt;</span></span><span class="pln"><span class="pln">
+</span></span><span class="com"><span class="com">#include</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">&lt;sys/wait.h&gt;</span></span><span class="pln"><span class="pln">
+</span></span><span class="com"><span class="com">#include</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">&lt;stdio.h&gt;</span></span><span class="pln"><span class="pln">
+</span></span><span class="com"><span class="com">#include</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">&lt;stdlib.h&gt;</span></span><span class="pln"><span class="pln">
+
+</span></span><span class="kwd"><span class="kwd">int</span></span><span class="pln"><span class="pln"> main</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">int</span></span><span class="pln"><span class="pln"> argc</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">char</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">*</span></span><span class="pln"><span class="pln">argv</span></span><span class="pun"><span class="pun">[])</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+  </span></span><span class="kwd"><span class="kwd">int</span></span><span class="pln"><span class="pln"> fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">2</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">                      </span></span><span class="com"><span class="com">// an array that will hold two file descriptors</span></span><span class="pln"><span class="pln">
+  pipe</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">                       </span></span><span class="com"><span class="com">// populates fds with two file descriptors</span></span><span class="pln"><span class="pln">
+  </span></span><span class="typ"><span class="typ">pid_t</span></span><span class="pln"><span class="pln"> pid </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> fork</span></span><span class="pun"><span class="pun">();</span></span><span class="pln"><span class="pln">              </span></span><span class="com"><span class="com">// create child process that is a clone of the parent</span></span><span class="pln"><span class="pln">
+  
+  </span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">pid </span></span><span class="pun"><span class="pun">==</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">                  </span></span><span class="com"><span class="com">// if pid == 0, then this is the child process</span></span><span class="pln"><span class="pln">
+    dup2</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">],</span></span><span class="pln"><span class="pln"> STDIN_FILENO</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">    </span></span><span class="com"><span class="com">// fds[0] (the read end of pipe) donates its data to file descriptor 0</span></span><span class="pln"><span class="pln">
+    close</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">]);</span></span><span class="pln"><span class="pln">                 </span></span><span class="com"><span class="com">// file descriptor no longer needed in child since stdin is a copy</span></span><span class="pln"><span class="pln">
+    close</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">]);</span></span><span class="pln"><span class="pln">                 </span></span><span class="com"><span class="com">// file descriptor unused in child</span></span><span class="pln"><span class="pln">
+    </span></span><span class="kwd"><span class="kwd">char</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">*</span></span><span class="pln"><span class="pln">argv</span></span><span class="pun"><span class="pun">[]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{(</span></span><span class="kwd"><span class="kwd">char</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">*)</span></span><span class="str"><span class="str">"sort"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> NULL</span></span><span class="pun"><span class="pun">};</span></span><span class="pln"><span class="pln">   </span></span><span class="com"><span class="com">// create argument vector</span></span><span class="pln"><span class="pln">
+    </span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">execvp</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">argv</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">],</span></span><span class="pln"><span class="pln"> argv</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">exit</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">  </span></span><span class="com"><span class="com">// run sort command (exit if something went wrong)</span></span><span class="pln"><span class="pln">
+  </span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln"> 
+
+  </span></span><span class="com"><span class="com">// if we reach here, we are in parent process</span></span><span class="pln"><span class="pln">
+  close</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">]);</span></span><span class="pln"><span class="pln">                 </span></span><span class="com"><span class="com">// file descriptor unused in parent</span></span><span class="pln"><span class="pln">
+  </span></span><span class="kwd"><span class="kwd">const</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">char</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">*</span></span><span class="pln"><span class="pln">words</span></span><span class="pun"><span class="pun">[]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="str"><span class="str">"pear"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">"peach"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">"apple"</span></span><span class="pun"><span class="pun">};</span></span><span class="pln"><span class="pln">
+  </span></span><span class="com"><span class="com">// write input to the writable file descriptor so it can be read in from child:</span></span><span class="pln"><span class="pln">
+  </span></span><span class="typ"><span class="typ">size_t</span></span><span class="pln"><span class="pln"> numwords </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">sizeof</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">words</span></span><span class="pun"><span class="pun">)/</span></span><span class="kwd"><span class="kwd">sizeof</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">words</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">]);</span></span><span class="pln"><span class="pln">
+  </span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="typ"><span class="typ">size_t</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> numwords</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> i</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+    dprintf</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">],</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">"%s\n"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> words</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">]);</span></span><span class="pln"><span class="pln"> 
+  </span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+  </span></span><span class="com"><span class="com">// send EOF so child can continue (child blocks until all input has been processed):</span></span><span class="pln"><span class="pln">
+  close</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fds</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">]);</span></span><span class="pln"><span class="pln"> 
+
+  </span></span><span class="kwd"><span class="kwd">int</span></span><span class="pln"><span class="pln"> status</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+  </span></span><span class="typ"><span class="typ">pid_t</span></span><span class="pln"><span class="pln"> wpid </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> waitpid</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">pid</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&amp;</span></span><span class="pln"><span class="pln">status</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln"> </span></span><span class="com"><span class="com">// wait for child to finish before exiting</span></span><span class="pln"><span class="pln">
+  </span></span><span class="kwd"><span class="kwd">return</span></span><span class="pln"><span class="pln"> wpid </span></span><span class="pun"><span class="pun">==</span></span><span class="pln"><span class="pln"> pid </span></span><span class="pun"><span class="pun">&amp;&amp;</span></span><span class="pln"><span class="pln"> WIFEXITED</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">status</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">?</span></span><span class="pln"><span class="pln"> WEXITSTATUS</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">status</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span></code></pre>
+<p>The program is written to run one specific command: <span class="inlinecode">sort</span>. Here’s how the code works: in the parent process, an array is created to store two file descriptors. After the <span class="inlinecode">pipe()</span> call, the array is populated with&nbsp;the hooked up file descriptors, where the first one will be read from the child process and the second one will be written to by the parent process.&nbsp;Then <span class="inlinecode">fork()</span> is called to create the child process, which has a copy of the parent’s file descriptors and memory. From that point, we check if we are running in the child process. If we are, the child calls <span class="inlinecode">dup2()</span> to cause its stdin to associate itself with the readable end of the pipe, which corresponds to fds[0]. An important detail about the way <span class="inlinecode">dup2()</span> works is that it will first close its second parameter, which is a file descriptor, if necessary. Thus in this example, stdin (which is open by default) is first closed, which will remove its reference to the default keyboard file. Then the stdin of the child process will be able to receive data via fds[0] instead of from the keyboard. That’s the magic of <span class="inlinecode">dup2()</span>!</p>
+<p>Now that the child’s stdin is ready to read in data, the child closes the file descriptors created by the <span class="inlinecode">pipe()</span> call since they are no longer needed in the child. The child then executes the&nbsp;<span class="inlinecode">sort</span>&nbsp;command, waiting for all the parent’s data to be written into the appropriate end of the pipe before sorting the data.</p>
+<p>It is possible that when <span class="inlinecode">fork()</span> is called, the child gets going before the parent continues, in which case the child hangs until it receives all input. Once the sort command finishes, the child process finishes&nbsp;after the <span class="inlinecode">execvp()</span> call (which executes the given command) and closes its default file descriptors 0, 1, and 2 automatically. After the <span class="inlinecode">fork()</span> call that creates the child, the parent closes fds[0] since it is not needed in the parent (the parent only needs to write data, not read it). The parent then writes each word in the given array to the writable end of the pipe (fds[1]), adding a new line character at the end to allow the sort command to properly receive each word on a new line. When all words have been written, the parent closes fds[1] since it is done writing data, which sends an EOF to the child to allow it to execute the sort command. The parent responsibly waits for the child to finish (via the <span class="inlinecode">waitpid()</span> call) before exiting. The last line is just a tidy way to return a value that depends on whether things went as expected.</p>
+<p>When all is said and done, this is the data flow diagram for the entire sequence of events:</p>
+<div id="attachment_7426" class="wp-caption aligncenter" style="width: 540px"><img decoding="async" loading="lazy" class="wp-image-7426" src="./Pipes, Forks, &amp; InputOutput_files/pipe20.png" alt="" width="540" height="163" srcset="https://www.rozmichelle.com/wp-content/uploads/pipe20.png 1472w, https://www.rozmichelle.com/wp-content/uploads/pipe20-300x90.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipe20-768x232.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipe20-640x193.png 640w" sizes="(max-width: 540px) 100vw, 540px"><p class="wp-caption-text">The final data flow of the code example. In the child, file descriptor 3 was copied to the child’s stdin, then 3 was closed and only the child’s stdin is used to get data, as represented by the numbers on the right side of the pipe.</p></div>
+<p>Keep in mind that this is example shows how a pipe is used, but a pipe isn’t necessary in this case. For example, the child could simply access data from the default stdin without any interference from the parent, which wouldn’t require using a pipe. This code simply shows how pipes set up the communication from one process to another, and this pattern is crucial when managing pipelines that have more than one command.</p>
+<p>To get an idea of what happens in this code, I’ve designed the following diagrams. In the images below, the lines show the association between a file descriptor and the open file it has a pointer to. The line arrow directions represent the flow of data. These diagrams should hopefully make it clear which file descriptors are needed by the parent and child, which in turn should help explain when it is appropriate to close a file descriptor to avoid a leak. Also keep in mind that because the instructions in the parent aren’t guaranteed to run before the instructions in the child, some of the steps below could happen at different times. The images are just to give you an idea of what could happen during execution, even though a few steps could be swapped along the way.</p>
+<div style="width: 600px; margin: 0 auto;">
+<div id="attachment_7362" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7362 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-2.png" alt="" width="2180" height="711" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-300x98.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-768x250.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-640x209.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">When the program starts, the parent process is created with the default streams set up in its file descriptor table. The arrows show the flow of data: stdin receives input from the keyboard and stdout and stderr send output to the terminal display.</p></div>
+<div id="attachment_7363" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7363 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-3.png" alt="" width="2180" height="1238" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-3.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-3-300x170.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-3-768x436.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-3-640x363.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The pipe() call finds the next two available file descriptors and associates each with the appropriate end of the created pipe. In this case, a process can read via 3 and write via 4.</p></div>
+<div id="attachment_7407" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7407 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipes1-4.png" alt="" width="2180" height="1407" srcset="https://www.rozmichelle.com/wp-content/uploads/pipes1-4.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipes1-4-300x194.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipes1-4-768x496.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipes1-4-640x413.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The fork() call creates the child process, which is a copy of the parent’s memory and file descriptor table at that point in time. Whatever files the parent’s file descriptors are associated with are the same files that the child’s file descriptors are associated with.</p></div>
+<div id="attachment_7365" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7365 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-5.png" alt="" width="2180" height="1155" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-5.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-5-300x159.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-5-768x407.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-5-640x339.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The parent closes the file descriptor it doesn’t need. The child calls dup2() to make its stdin be a copy of fds[0], closing file descriptor 0 first.</p></div>
+<div id="attachment_7372" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7372 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-6.png" alt="" width="2180" height="1230" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-6.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-6-300x169.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-6-768x433.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-6-640x361.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The parent writes data to the writable end of the pipe. The child closes the file descriptors it doesn’t need.</p></div>
+<div id="attachment_7367" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7367 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-7.png" alt="" width="2180" height="1084" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-7.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-7-300x149.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-7-768x382.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-7-640x318.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">After writing all the data, the parent closes fds[1] to let the child know that all data has been sent.</p></div>
+<div id="attachment_7409" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7409 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-2-1.png" alt="" width="2180" height="1163" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-1.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-1-300x160.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-1-768x410.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-1-640x341.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The child process executes the sort command on the input.</p></div>
+<div id="attachment_7369" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7369 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-9.png" alt="" width="2180" height="1095" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-9.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-9-300x151.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-9-768x386.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-9-640x321.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The sorted output is sent to the terminal and the child sends a signal when it terminates, which will then allow the parent process to finish.</p></div>
+<div id="attachment_7479" class="wp-caption aligncenter" style="width: 2180px"><img decoding="async" loading="lazy" class="wp-image-7479 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipesgraph1-2-2.png" alt="" width="2180" height="1182" srcset="https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-2.png 2180w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-2-300x163.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-2-768x416.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipesgraph1-2-2-640x347.png 640w" sizes="(max-width: 2180px) 100vw, 2180px"><p class="wp-caption-text">The processes clean up after their default file descriptors on their own. All additional file descriptors used during program execution have properly been closed.</p></div>
+</div>
+<p>In particular, look at the steps that have blue lines, which represent the flow of data at that point in time. If you chain those steps together, you get the following: the parent writes data to the writable end of the pipe, which then is read from the readable end of the pipe by the child via the child’s stdin file descriptor, and lastly, that data is sent from the child as output to the terminal. In a nutshell, all the other lines in the diagram end up either handing off data to others or not even being used. Also, when the program is over, the file descriptors that needed to be closed are gone. This is a small program example, but you can see how messy it can get when pipes are involved. This, however, is a beautiful process: keep track of the data and clean up after yourself, and the chaos will sort itself out in the end!</p>
+<p>One thing you’ll notice here is that the file descriptors that a pipe starts with may get redirected to another stream as necessary. The pipe is a convenience that gives you two file descriptors that are set up to work together, but their purposes can be redirected as necessary to ensure that data flows to and from the right places.</p>
+<p>Hopefully, these diagrams clarify what happens when creating processes to run commands. It’s important to understand not only how the file descriptors are used but also when they are not used so they can be closed appropriately. They are powerful and very easy to get wrong or leave behind.</p>
+<h1>I/O Redirection</h1>
+<p>There’s one last topic I’d like to go over. In our discussion thus far, we’ve explored the default behavior that comes with using the three default file descriptors, where we use the keyboard and terminal for all initial input and final output, respectively. We’ve also looked at how we can pass data between processes in a pipeline. What if we want to use an&nbsp;existing file as input to the first command in a pipeline instead of using the keyboard for input, or what if we want to send the output of the last pipeline command to a file? This can be done with I/O redirection. On the command line,&nbsp;the “&lt;” character is used for input redirection and “&gt;” is used for output redirection, where the output file is created if it doesn’t exist or overwritten if it already exists. To append data to an output file instead of overwriting the contents, you can use “&gt;&gt;”. Let’s look at an example that uses both input and output redirection. Say we have the file <strong>words.txt</strong> with the following content:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> cat words</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt
+pear
+peach
+apple</span></span></code></pre>
+<p>We can use this file as input to the <span class="inlinecode">sort</span> command and then output the contents to another file (or even the same file if desired) as shown below:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> words</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt sort </span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> words2</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt</span></span></code></pre>
+<p>Note that there is no output to the screen because the output is stored in <strong>words2.txt</strong>. We could also write this command as <span class="inlinecode">sort &lt; words.txt &gt; words2.txt</span>. If we use <span class="inlinecode">cat</span> to print out the contents of the output file, we get the following:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> cat words2</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt
+apple
+peach
+pear</span></span></code></pre>
+<p>It turns out that implementing I/O redirection is relatively simple to do. We can simply use the <span class="inlinecode">dup2()</span> magic that we saw earlier:</p>
+<pre class=" prettyprinted" style=""><code class=" prettyprinted" style=""><span class="com"><span class="com">// if first command in pipeline has input redirection</span></span><span class="pln"><span class="pln">
+</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">hasInputFile </span></span><span class="pun"><span class="pun">&amp;&amp;</span></span><span class="pln"><span class="pln"> is1stCommand</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln"> 
+  </span></span><span class="kwd"><span class="kwd">int</span></span><span class="pln"><span class="pln"> fdin </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> open</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">inputFile</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> O_RDONLY</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0644</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+  dup2</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fdin</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> STDIN_FILENO</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+  close</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fdin</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+</span></span><span class="com"><span class="com">// if last command in pipeline has output redirection</span></span><span class="pln"><span class="pln">
+</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">hasOutputFile </span></span><span class="pun"><span class="pun">&amp;&amp;</span></span><span class="pln"><span class="pln"> isLastCommand</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln"> 
+  </span></span><span class="kwd"><span class="kwd">int</span></span><span class="pln"><span class="pln"> fdout </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> open</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">outputFile</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> O_WRONLY </span></span><span class="pun"><span class="pun">|</span></span><span class="pln"><span class="pln"> O_CREAT </span></span><span class="pun"><span class="pun">|</span></span><span class="pln"><span class="pln"> O_TRUNC</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0644</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+  dup2</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fdout</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> STDOUT_FILENO</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+  close</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">fdout</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span></code></pre>
+<p>This code is hopefully pretty straightforward. If there is input to redirect (the detection of which is handled in another function not shown here), then call <span class="inlinecode">open()</span> on the file and assign that data stream to the file descriptor that <span class="inlinecode">open()</span> uses. Then use <span class="inlinecode">dup2()</span> magic to allow stdin to read that file’s contents as input. Similarly, if output redirection is at the end of the pipeline, then redirect stdout to write the contents of the last command to the specified file.</p>
+<p>Here’s a diagram that represents the previous example:</p>
+<div id="attachment_7441" class="wp-caption aligncenter" style="width: 340px"><img decoding="async" loading="lazy" class="wp-image-7441" src="./Pipes, Forks, &amp; InputOutput_files/pipeio.png" alt="" width="340" height="187" srcset="https://www.rozmichelle.com/wp-content/uploads/pipeio.png 1010w, https://www.rozmichelle.com/wp-content/uploads/pipeio-300x165.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipeio-768x423.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipeio-640x352.png 640w" sizes="(max-width: 340px) 100vw, 340px"><p class="wp-caption-text">Input and output redirection</p></div>
+<p>You may be wondering why the file descriptors both start off as 3. I ran this command in a mini-shell I wrote for a homework assignment, so I am able to print out the file descriptors that are assigned when I run any command. My shell uses the code shown above. Note that first I check if there is input redirection. If there is, I call the <span class="inlinecode">open()</span> command to read the data, which assigns this stream to file descriptor 3. Once I redirect stdin to handle the data that 3 handles, I then close 3, which makes 3 available for the output redirection check. Thus both files start out using 3 but then are appropriately redirected to the stream that needs the data, as shown by the red struckthrough text.</p>
+<p>You can see the power of Unix at work here, where we can not only chain together small programs to make a larger program, but we can also load data into a pipeline and output data into a file for future use. I find it all so magical. :)</p>
+<h1>Summary</h1>
+<p>To wrap up what we’ve discussed, let’s look at a long pipeline with a trivial but potentially useful example. Let’s imagine you want to find out what the most loved color is among a group of people. Someone types up a list of colors where each line represents one person’s favorite color. It is your job to take that file and run some commands on it, ideally in one impressive pipeline, such that the three most popular colors are saved in a new file along with a count of how many votes each color received. Here’s how you could do it:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> colors</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt sort </span></span><span class="pun"><span class="pun">|</span></span><span class="pln"><span class="pln"> uniq </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">c </span></span><span class="pun"><span class="pun">|</span></span><span class="pln"><span class="pln"> sort </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">r </span></span><span class="pun"><span class="pun">|</span></span><span class="pln"><span class="pln"> head </span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">3</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> favcolors</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt</span></span></code></pre>
+<p>And here’s the diagram:</p>
+<div id="attachment_7461" class="wp-caption aligncenter" style="width: 2840px"><a href="./Pipes, Forks, &amp; InputOutput_files/pipefinal-1(1).png" rel="fancybox"><img decoding="async" loading="lazy" class="wp-image-7461 size-full" src="./Pipes, Forks, &amp; InputOutput_files/pipefinal-1(1).png" alt="" width="2840" height="684" srcset="https://www.rozmichelle.com/wp-content/uploads/pipefinal-1.png 2840w, https://www.rozmichelle.com/wp-content/uploads/pipefinal-1-300x72.png 300w, https://www.rozmichelle.com/wp-content/uploads/pipefinal-1-768x185.png 768w, https://www.rozmichelle.com/wp-content/uploads/pipefinal-1-640x154.png 640w" sizes="(max-width: 2840px) 100vw, 2840px"></a><p class="wp-caption-text">Finding the most popular color</p></div>
+<p>The commands work as follows: <strong>colors.txt</strong> contains a list of colors that were entered in random order. The <span class="inlinecode">uniq</span> command removes any line that is the same as the line preceding it, effectively removing all consecutive duplicate lines. In order for this to work as desired, we need to first sort the list of colors, which is why we call <span class="inlinecode">sort</span> first. Then we call <span class="inlinecode">uniq -c</span>, where the <span class="inlinecode">-c</span> option will remove the duplicate colors and also show a count of how many times each color appeared. Next, we sort this data in descending order (which is what the <span class="inlinecode">-r</span> option does when passed to <span class="inlinecode">sort</span>). Lastly, we call <span class="inlinecode">head -3</span> to get the top three lines in the result, and we store that output in <strong>favcolors.txt</strong>. Sweet! In the end, <strong>favcolors.txt</strong> has the following desired data:</p>
+<pre class=" prettyprinted" style=""><code class="pln prettyprinted" style=""><strong><span class="pln"><span class="pln">$</span></span></strong><span class="pln"><span class="pln"> cat favcolors</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">txt
+      </span></span><span class="lit"><span class="lit">4</span></span><span class="pln"><span class="pln"> red
+      </span></span><span class="lit"><span class="lit">3</span></span><span class="pln"><span class="pln"> blue
+      </span></span><span class="lit"><span class="lit">2</span></span><span class="pln"><span class="pln"> green</span></span></code></pre>
+<p>This is more complex than other examples we’ve studied, and the file descriptors shown in the diagram make that clear. Because my shell program calls pipe() before it checks for I/O redirection, the first pipe gets file descriptors 3 and 4 and then the file descriptors for the input and output files are assigned 5 and 6, respectively. Once 5 and 6 are redirected to stdin and stdout, respectively, they are closed (as shown on the far left and far right sides of the diagram). By the time the second pipe is created, it can use some recycled file descriptors, and the same goes for the last pipe. Don’t worry too much about how the file descriptors are recycled because that is specific to my code, but know that everything gets cleaned up in the end and the data is passed off correctly.</p>
+<p>We’ve covered quite a bit of material, and although I love my audience, I really wrote this more for my own sanity than anything else! But as always, I hope this was helpful. Writing this all out and creating the diagrams definitely solidified my own understanding of everything, although maybe a week too late for the midterm and homework nightmares I experienced last week. :)</p>
+<p>A special “thank you!” goes out to Hemanth, the course assistant who answered my countless questions about these topics! I sent him many diagram mockups to make sure they were both accurate and clear, and his help really got me to a solid point of understanding. The course staff for this class has been amazing, but Hemanth really has gone above and beyond to help me. The same goes for the professor, Jerry, who has tolerated my many questions and panic attacks about my course performance. :) Shoutout to him as well for reviewing this post for accuracy. A support system like this is why I love Stanford so much.</p>
+<p>Thanks for reading!</p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-meta bottom">
+		This entry was posted in <a href="https://www.rozmichelle.com/category/computer-science/" rel="category tag">Computer Science</a> and tagged <a href="https://www.rozmichelle.com/tag/unix/" rel="tag">Unix</a>.
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+                
+                                
+                	<nav role="navigation" id="nav-below" class="post-navigation section">
+		<h1 class="screen-reader-text">Post navigation</h1>
+
+	        <h2 class="section-title"><span>Navigation</span></h2>
+		<div class="nav-previous"><a href="https://www.rozmichelle.com/fractals/" rel="prev"><span class="meta-nav">←</span> Fun with Fractals</a></div>		<div class="nav-next"><a href="https://www.rozmichelle.com/slate2/" rel="next">A New Christmas Toy: Digital Sketching with the Slate 2 <span class="meta-nav">→</span></a></div>
+	
+	</nav><!-- #nav-below -->
+	
+                
+	<div id="comments" class="comments-area section">
+
+					<h2 class="comments-title section-title">
+        <span>
+			30 comments		</span>
+        </h2>
+
+				<nav id="comment-nav-above" class="comment-navigation" role="navigation">
+			<h1 class="screen-reader-text">Comment navigation</h1>
+			<div class="nav-previous"><a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-2/#comments">← Older Comments</a></div>
+			<div class="nav-next"></div>
+		</nav><!-- #comment-nav-above -->
+		
+		<ol class="comment-list">
+			
+	<li id="comment-639440" class="comment byuser comment-author-rozroz bypostauthor even thread-even depth-1">
+		<article id="div-comment-639440" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/44fe7d3108684c1e7b9c41f74bf69734.png" srcset="https://secure.gravatar.com/avatar/44fe7d3108684c1e7b9c41f74bf69734?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn"><a href="https://www.rozmichelle.com/" class="url" rel="ugc">Roslyn McConnell</a></cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-639440">
+                            <time datetime="2023-09-03T09:19:47-07:00">
+                                September 3, 2023 at 9:19 am                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Hello! Thank you! You’d be correct if I sorted a list of numbers without using uniq, but since the <code class=" prettyprinted" style=""><span class="pln">uniq </span><span class="pun">-</span><span class="pln">c</span></code> command renders each line as a string (because it prints the count followed by a space and the counted value), each line is interpreted as a string and sorted as such. :)</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-639389" class="comment odd alt thread-odd thread-alt depth-1">
+		<article id="div-comment-639389" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/410faaf76fa6d9aff9109d2a05221f86.png" srcset="https://secure.gravatar.com/avatar/410faaf76fa6d9aff9109d2a05221f86?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">AKS</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-639389">
+                            <time datetime="2023-08-22T20:48:05-07:00">
+                                August 22, 2023 at 8:48 pm                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Nice explanation. I am pretty sure in that last pipeline, you need to use sort -nr, -n for numerical sort to get the required result. But well that’s  besides the point.</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-639305" class="comment byuser comment-author-rozroz bypostauthor even thread-even depth-1">
+		<article id="div-comment-639305" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/44fe7d3108684c1e7b9c41f74bf69734.png" srcset="https://secure.gravatar.com/avatar/44fe7d3108684c1e7b9c41f74bf69734?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn"><a href="https://www.rozmichelle.com/" class="url" rel="ugc">Roslyn McConnell</a></cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-639305">
+                            <time datetime="2023-07-27T09:41:01-07:00">
+                                July 27, 2023 at 9:41 am                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Hi! Thanks for the kudos! Can you explain a bit more about what you mean by typing outfile? Are you referring to redirecting data to a file?</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-639295" class="comment odd alt thread-odd thread-alt depth-1">
+		<article id="div-comment-639295" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/e7317f6a545a895976cd0b98805923aa.png" srcset="https://secure.gravatar.com/avatar/e7317f6a545a895976cd0b98805923aa?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">meroV</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-639295">
+                            <time datetime="2023-07-25T12:28:39-07:00">
+                                July 25, 2023 at 12:28 pm                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Thanks for the article! This is by far the best illustration I have seen so far. I just have a follow up question. What is the exact mechanism when I type ” outfile” in unix Bash? how come the command ends? given that /dev/random file itself never ends?</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-638974" class="comment even thread-even depth-1">
+		<article id="div-comment-638974" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/a89d384a972be49e0cd705834212bd5d.png" srcset="https://secure.gravatar.com/avatar/a89d384a972be49e0cd705834212bd5d?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">Leo González Pérez</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-638974">
+                            <time datetime="2023-04-14T02:41:29-07:00">
+                                April 14, 2023 at 2:41 am                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Roslyn,<br>
+Just thank you very much. Your article is clear, complete and it was a very pleasant find for me. Kind regards!</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-638910" class="comment odd alt thread-odd thread-alt depth-1">
+		<article id="div-comment-638910" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/56c1d1a316e114138983f1e8c387ad87.png" srcset="https://secure.gravatar.com/avatar/56c1d1a316e114138983f1e8c387ad87?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">Leon</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-638910">
+                            <time datetime="2023-03-27T07:57:18-07:00">
+                                March 27, 2023 at 7:57 am                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Hey Roslyn,<br>
+thanks for the great article! It really helped me getting into this topic. I am curious how you implemented your multiple pipes example. Do you have the source code somewhere and are ok with sharing it? Thank you in any case! Have a nice day!</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-638847" class="comment even thread-even depth-1">
+		<article id="div-comment-638847" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/6b27a8f944718e52b40a97c8ac4d8803.png" srcset="https://secure.gravatar.com/avatar/6b27a8f944718e52b40a97c8ac4d8803?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">Marcel</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-638847">
+                            <time datetime="2023-03-17T03:27:40-07:00">
+                                March 17, 2023 at 3:27 am                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Thank you so much for this explanation. Finally I was able to do my assignment at school.<br>
+There’s one paragraph and a pictogram that could be added about pipe(fds):<br>
+– That dup2(fds[0], stdin) hands over a copy of fds[0]. An fds[0] can be closed, because the redirection of the stdin is still valid.<br>
+– Pictogram: fds = { READ, WRITE } and on the pipe a write and read.<br>
+In my assignment I have to take care of the stderror etc. as well, which further complicates the task. Perhaps with your skills to draw diagrams you can help to shed some light into that jungle as well?<br>
+Really great article and thank you again for all the time and effort you put into it!</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-638657" class="comment odd alt thread-odd thread-alt depth-1">
+		<article id="div-comment-638657" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/e189b677dea0b502a7f374220138e3cf.png" srcset="https://secure.gravatar.com/avatar/e189b677dea0b502a7f374220138e3cf?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">Arisha</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-638657">
+                            <time datetime="2023-02-13T18:43:15-07:00">
+                                February 13, 2023 at 6:43 pm                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Amazing Explanation!!! Very clear and organized.</p>
+<p>Thanks a  lot for the information.</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-638620" class="comment byuser comment-author-rozroz bypostauthor even thread-even depth-1">
+		<article id="div-comment-638620" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/44fe7d3108684c1e7b9c41f74bf69734.png" srcset="https://secure.gravatar.com/avatar/44fe7d3108684c1e7b9c41f74bf69734?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn"><a href="https://www.rozmichelle.com/" class="url" rel="ugc">Roslyn McConnell</a></cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-638620">
+                            <time datetime="2023-02-06T18:06:08-07:00">
+                                February 6, 2023 at 6:06 pm                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Hi Lisa! Thank you so much for your kind words! They mean a lot to me and it is feedback like yours that inspires me to keep making this type of content! :)</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-638537" class="comment odd alt thread-odd thread-alt depth-1">
+		<article id="div-comment-638537" class="comment-body">
+				<div class="comment-author vcard">
+					<img alt="" src="./Pipes, Forks, &amp; InputOutput_files/971d3894e3cdbb9bcc2637ec33698eef.png" srcset="https://secure.gravatar.com/avatar/971d3894e3cdbb9bcc2637ec33698eef?s=120&amp;d=mm&amp;r=x 2x" class="avatar avatar-60 photo" height="60" width="60" loading="lazy" decoding="async">				</div><!-- .comment-author -->
+                <div class="comment-box">
+					<cite class="fn">Lisa</cite> <span class="says">says:</span>                    <span class="comment-meta">
+                        <small>
+                        <a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-3/#comment-638537">
+                            <time datetime="2023-01-25T10:45:09-07:00">
+                                January 25, 2023 at 10:45 am                            </time>
+                        </a>
+                                                </small>
+                                        </span><!-- .comment-meta -->
+
+                    <div class="comment-content">
+                        <p>Wow, the diagrams are so neat. This article helped me a lot to understand this topic better. Thank you so much for sharing this with us. Your experiences at Stanford University sound amazing, I wish I could study in such a nice, intelligent and creative environment. I found your website because I was looking for an article that explains handling pipes and I’m glad I found it, because your blog is inspiring, you are really a person that I look up to. Lots of appreciation, Lisa</p>
+                    </div><!-- .comment-content -->                        
+                        
+                        
+                    <!-- .comment-metadata -->
+
+
+
+					</div></article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+				<nav id="comment-nav-below" class="comment-navigation" role="navigation">
+			<h1 class="screen-reader-text">Comment navigation</h1>
+			<div class="nav-previous"><a href="https://www.rozmichelle.com/pipes-forks-dups/comment-page-2/#comments">← Older Comments</a></div>
+			<div class="nav-next"></div>
+		</nav><!-- #comment-nav-below -->
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title section-title"><span>Leave a Reply</span></h3><form action="https://www.rozmichelle.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate=""><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required=""></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required=""></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" autocomplete="email" required=""></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="7285" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="da58948268"></p><p style="display: none !important;"><label>Δ<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="1707821530407"><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+            </div>
+            </div><!-- #content -->
+        </div><!-- #primary -->
+        
+                        
+        <div id="sidebar" class="widget-area" role="complementary">
+        
+            <aside id="search-3" class="widget widget_search"><h3 class="widget-title"><span>Search my <em>site</em></span></h3><form role="search" method="get" class="search-form" action="https://www.rozmichelle.com/">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+	</label>
+	<input type="submit" class="search-submit" value="Search">
+</form>
+</aside><aside id="sugarspice_resume_widget-2" class="widget sugarspice_resume_widget"><h3 class="widget-title"><em><span>Resume</span></em></h3>
+        
+        <p class="widget-about"></p>
+
+        <a href="https://www.rozmichelle.com/wp-content/uploads/rozresume2019stanford.pdf" class="button">Download My Resume</a>
+
+
+		</aside><aside id="sugarspice_poetry_widget-2" class="widget sugarspice_poetry_widget"><h3 class="widget-title"><span>My <em>Poems</em></span></h3>        
+        <ul>
+			                 <li><a href="https://www.rozmichelle.com/spacetime/">Spacetime</a></li>
+                             <li><a href="https://www.rozmichelle.com/wait/">Wait</a></li>
+                             <li><a href="https://www.rozmichelle.com/sankofa-love/">Sankofa Love</a></li>
+                             <li><a href="https://www.rozmichelle.com/hey-bright-soul/">Hey Bright Soul</a></li>
+                             <li><a href="https://www.rozmichelle.com/lasso/">Lasso</a></li>
+                             <li><a href="https://www.rozmichelle.com/soul-swim/">Soul Swim</a></li>
+                             <li><a href="https://www.rozmichelle.com/the-color-of-your-eyes/">The Color Of Your Eyes</a></li>
+                             <li><a href="https://www.rozmichelle.com/kingdom-come/">Kingdom Come</a></li>
+                             <li><a href="https://www.rozmichelle.com/prism/">Prism</a></li>
+                             <li><a href="https://www.rozmichelle.com/origami/">Origami</a></li>
+                             <li><a href="https://www.rozmichelle.com/sugar-on-the-rim/">Sugar On The Rim</a></li>
+                             <li><a href="https://www.rozmichelle.com/cliffhanger/">Cliffhanger</a></li>
+                             <li><a href="https://www.rozmichelle.com/imagine/">Imagine</a></li>
+                             <li><a href="https://www.rozmichelle.com/mechanical-heart/">Mechanical Heart</a></li>
+                             <li><a href="https://www.rozmichelle.com/astronomy-lessons/">Astronomy Lessons</a></li>
+                             <li><a href="https://www.rozmichelle.com/purple/">Purple</a></li>
+                             <li><a href="https://www.rozmichelle.com/circles/">Circles</a></li>
+                             <li><a href="https://www.rozmichelle.com/alchemy-dream/">Alchemy Dream</a></li>
+                             <li><a href="https://www.rozmichelle.com/t-h-a-w/">T.h.a.w.</a></li>
+                             <li><a href="https://www.rozmichelle.com/helium/">Helium</a></li>
+                             <li><a href="https://www.rozmichelle.com/the-first-draft/">The First Draft</a></li>
+                             <li><a href="https://www.rozmichelle.com/love-letters/">Love Letters</a></li>
+                             <li><a href="https://www.rozmichelle.com/black-sand/">Black Sand</a></li>
+                             <li><a href="https://www.rozmichelle.com/organ-donor/">Organ Donor</a></li>
+                             <li><a href="https://www.rozmichelle.com/quantum-physics/">Quantum Physics</a></li>
+                             <li><a href="https://www.rozmichelle.com/godiva/">Godiva</a></li>
+                             <li><a href="https://www.rozmichelle.com/friday-the-13th/">Friday The 13th</a></li>
+                             <li><a href="https://www.rozmichelle.com/silk/">Silk</a></li>
+                             <li><a href="https://www.rozmichelle.com/speak-now/">Speak Now</a></li>
+                             <li><a href="https://www.rozmichelle.com/its-not-like/">It’s Not Like</a></li>
+                             <li><a href="https://www.rozmichelle.com/glass-jar/">Glass Jar</a></li>
+                             <li><a href="https://www.rozmichelle.com/love-in-the-city/">Love In The City</a></li>
+                             <li><a href="https://www.rozmichelle.com/rnb/">R&amp;B</a></li>
+                             <li><a href="https://www.rozmichelle.com/inside/">Inside</a></li>
+                             <li><a href="https://www.rozmichelle.com/write-on/">Write On</a></li>
+                             <li><a href="https://www.rozmichelle.com/just-like-jamaica/">Just Like Jamaica</a></li>
+                             <li><a href="https://www.rozmichelle.com/death/">Death</a></li>
+                             <li><a href="https://www.rozmichelle.com/sweetness/">Sweetness</a></li>
+                             <li><a href="https://www.rozmichelle.com/lynch/">Lynch</a></li>
+                             <li><a href="https://www.rozmichelle.com/rapture/">Rapture</a></li>
+                             <li><a href="https://www.rozmichelle.com/new-roads/">New Roads</a></li>
+                             <li><a href="https://www.rozmichelle.com/celestial-woman/">Celestial Woman</a></li>
+                             <li><a href="https://www.rozmichelle.com/timeless/">Timeless</a></li>
+                             <li><a href="https://www.rozmichelle.com/bittersweet/">Bittersweet</a></li>
+                             <li><a href="https://www.rozmichelle.com/lens/">Lens</a></li>
+                          </ul>
+
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h3 class="widget-title"><span>Recent <em>Posts</em></span></h3>
+		<ul>
+											<li>
+					<a href="https://www.rozmichelle.com/react-game-design-recreating-wordle/">React Game Design: Recreating Wordle</a>
+									</li>
+											<li>
+					<a href="https://www.rozmichelle.com/spacetime/">Spacetime</a>
+									</li>
+											<li>
+					<a href="https://www.rozmichelle.com/improving-insight-at-netgear/">Improving Insight At NETGEAR</a>
+									</li>
+											<li>
+					<a href="https://www.rozmichelle.com/interactive-storytelling-with-twine/">Interactive Storytelling with Twine</a>
+									</li>
+											<li>
+					<a href="https://www.rozmichelle.com/wait/">Wait</a>
+									</li>
+					</ul>
+
+		</aside><aside id="categories-356874111" class="widget widget_categories"><h3 class="widget-title"><em><span>Categories</span></em></h3>
+			<ul>
+					<li class="cat-item cat-item-114"><a href="https://www.rozmichelle.com/category/computer-science/">Computer Science</a> (9)
+</li>
+	<li class="cat-item cat-item-99"><a href="https://www.rozmichelle.com/category/creativewriting/">Creative Writing</a> (48)
+<ul class="children">
+	<li class="cat-item cat-item-48"><a href="https://www.rozmichelle.com/category/creativewriting/poetry/">Poetry</a> (45)
+</li>
+	<li class="cat-item cat-item-17"><a href="https://www.rozmichelle.com/category/creativewriting/prose/">Prose</a> (3)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://www.rozmichelle.com/category/design/">Design</a> (22)
+<ul class="children">
+	<li class="cat-item cat-item-88"><a href="https://www.rozmichelle.com/category/design/artwork/">Artwork</a> (3)
+</li>
+	<li class="cat-item cat-item-122"><a href="https://www.rozmichelle.com/category/design/digital-art/">Digital Art</a> (5)
+</li>
+	<li class="cat-item cat-item-147"><a href="https://www.rozmichelle.com/category/design/games/">Games</a> (5)
+</li>
+	<li class="cat-item cat-item-124"><a href="https://www.rozmichelle.com/category/design/logos-and-icons/">Logos &amp; Icons</a> (1)
+</li>
+	<li class="cat-item cat-item-137"><a href="https://www.rozmichelle.com/category/design/portfolio/">Portfolio</a> (9)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-65"><a href="https://www.rozmichelle.com/category/journal/">Journal</a> (45)
+<ul class="children">
+	<li class="cat-item cat-item-44"><a href="https://www.rozmichelle.com/category/journal/alter-ego/">Alter Ego</a> (2)
+</li>
+	<li class="cat-item cat-item-126"><a href="https://www.rozmichelle.com/category/journal/music/">Music</a> (2)
+</li>
+	<li class="cat-item cat-item-105"><a href="https://www.rozmichelle.com/category/journal/natural-hair-journey/">Natural Hair Journey</a> (2)
+</li>
+	<li class="cat-item cat-item-24"><a href="https://www.rozmichelle.com/category/journal/roz-daily/">Roz Daily</a> (9)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-107"><a href="https://www.rozmichelle.com/category/travel/">Travel</a> (10)
+</li>
+			</ul>
+
+			</aside><aside id="text-4" class="widget widget_text"><h3 class="widget-title"><span>Quick <em>Facts</em></span></h3>			<div class="textwidget"><h5>From</h5>Fort Lauderdale, Florida
+<h5>Residence</h5>Sunrise, Florida
+<h5>Ancestry</h5>Jamaica, Ivory Coast
+<h5>Education</h5> 
+<ul><li>Stanford University c/o 2019: <br>
+M.S. in Computer Science</li>
+<li>Cornell University c/o 2007:  <br>
+B.A. in English and Africana Studies</li>
+</ul>
+<h5>Occupation</h5> Product Design Manager I at Datadog</div>
+		</aside>        
+        </div><!-- #sidebar -->
+        
+        
+    </div><!-- #main -->
+
+        </div><!-- #page -->
+
+		
+            <div id="prefooter">
+
+                <div id="prefooter-inner" class="row">
+
+
+
+                
+                <div class="one-third" role="complementary">
+
+                    <aside id="sugarspice_about_widget-2" class="widget sugarspice_about_widget"><h3 class="widget-title"><span>About <em>Me</em></span></h3>
+        <img src="./Pipes, Forks, &amp; InputOutput_files/profile.png" class="profile">
+        <p class="widget-about">Product Design Manager by day. Artist, developer, writer, home cook,  and gamer by night! I love creating and experiencing beautiful things.</p>
+
+        <a href="https://www.rozmichelle.com/about" class="button">Read more</a>
+
+
+		</aside>
+                </div><!-- #first .widget-area -->
+
+                
+
+
+                
+                <div class="one-third" role="complementary">
+
+                    <aside id="sugarspice_resume_widget-3" class="widget sugarspice_resume_widget"><h3 class="widget-title"><em><span>Resume</span></em></h3>
+        
+        <p class="widget-about"></p>
+
+        <a href="https://www.rozmichelle.com/wp-content/uploads/rozresume2019stanford.pdf" class="button">Download My Resume</a>
+
+
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h3 class="widget-title"><span>Latest <em>Pics</em></span></h3><div class="textwidget custom-html-widget">
+<div id="sb_instagram" class="sbi sbi_mob_col_1 sbi_tab_col_2 sbi_col_5 sbi_width_resp sbi_small" style="padding-bottom: 10px;width: 100%;" data-feedid="sbi_4111406112216215#5" data-res="auto" data-cols="5" data-colsmobile="1" data-colstablet="2" data-num="5" data-nummobile="" data-shortcode-atts="{&quot;num&quot;:&quot;5&quot;,&quot;cols&quot;:&quot;5&quot;,&quot;showheader&quot;:&quot;false&quot;,&quot;shobio&quot;:&quot;false&quot;,&quot;showbutton&quot;:&quot;false&quot;}" data-postid="7285" data-locatornonce="36b525447d" data-sbi-flags="favorLocal" data-sbi-index="1">
+	
+    <div id="sbi_images" style="padding: 5px;">
+		<div class="sbi_item sbi_type_video" id="sbi_18045992458547894" data-date="1699847415">
+    <div class="sbi_photo_wrap">
+        <a class="sbi_photo sbi_imgLiquid_bgSize sbi_imgLiquid_ready" href="https://www.instagram.com/reel/Czklr2Juw_4/" target="_blank" rel="noopener nofollow" data-full-res="https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/401614307_1060025635015494_4284372057893502313_nfull.jpg" data-img-src-set="{&quot;d&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401614307_1060025635015494_4284372057893502313_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=5KKKohbWeS4AX_SN9E4&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfC1ruZRtYxUHhyOWs4p4lgHyoKneY7EfcRtKrxW3vUeFQ&amp;oe=658DB4A8&quot;,&quot;150&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401614307_1060025635015494_4284372057893502313_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=5KKKohbWeS4AX_SN9E4&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfC1ruZRtYxUHhyOWs4p4lgHyoKneY7EfcRtKrxW3vUeFQ&amp;oe=658DB4A8&quot;,&quot;320&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401614307_1060025635015494_4284372057893502313_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=5KKKohbWeS4AX_SN9E4&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfC1ruZRtYxUHhyOWs4p4lgHyoKneY7EfcRtKrxW3vUeFQ&amp;oe=658DB4A8&quot;,&quot;640&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401614307_1060025635015494_4284372057893502313_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=5KKKohbWeS4AX_SN9E4&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfC1ruZRtYxUHhyOWs4p4lgHyoKneY7EfcRtKrxW3vUeFQ&amp;oe=658DB4A8&quot;}" style="height: 83.1063px; background-image: url(&quot;https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/401614307_1060025635015494_4284372057893502313_nthumb.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <span class="sbi-screenreader">Guess what we did for date night? Yep, we wall-mou</span>
+            	        <svg style="color: rgba(255,255,255,1)" class="svg-inline--fa fa-play fa-w-14 sbi_playbtn" aria-label="Play" aria-hidden="true" data-fa-processed="" data-prefix="fa" data-icon="play" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>            <img src="./Pipes, Forks, &amp; InputOutput_files/401614307_1060025635015494_4284372057893502313_nthumb.jpg" alt="Guess what we did for date night? Yep, we wall-mounted a TV! 😁 @therueler 😘 #homerenovation #datenight" style="display: none;">
+        </a>
+    </div>
+</div><div class="sbi_item sbi_type_video" id="sbi_18213424180255050" data-date="1699763480">
+    <div class="sbi_photo_wrap">
+        <a class="sbi_photo sbi_imgLiquid_bgSize sbi_imgLiquid_ready" href="https://www.instagram.com/reel/CziFsbNOTYy/" target="_blank" rel="noopener nofollow" data-full-res="https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/401025993_120346797839098_5904895580396522814_nfull.jpg" data-img-src-set="{&quot;d&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401025993_120346797839098_5904895580396522814_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=FZpi1WFRshwAX-6AW9r&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfDrmP8zUSaT0BxfM2-j7AYo7aVYXhgyCV3y4S7uHPQf2w&amp;oe=658C82BE&quot;,&quot;150&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401025993_120346797839098_5904895580396522814_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=FZpi1WFRshwAX-6AW9r&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfDrmP8zUSaT0BxfM2-j7AYo7aVYXhgyCV3y4S7uHPQf2w&amp;oe=658C82BE&quot;,&quot;320&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401025993_120346797839098_5904895580396522814_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=FZpi1WFRshwAX-6AW9r&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfDrmP8zUSaT0BxfM2-j7AYo7aVYXhgyCV3y4S7uHPQf2w&amp;oe=658C82BE&quot;,&quot;640&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/401025993_120346797839098_5904895580396522814_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=FZpi1WFRshwAX-6AW9r&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfDrmP8zUSaT0BxfM2-j7AYo7aVYXhgyCV3y4S7uHPQf2w&amp;oe=658C82BE&quot;}" style="height: 83.1063px; background-image: url(&quot;https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/401025993_120346797839098_5904895580396522814_nthumb.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <span class="sbi-screenreader">Watch me create this triangle accent wall! #homere</span>
+            	        <svg style="color: rgba(255,255,255,1)" class="svg-inline--fa fa-play fa-w-14 sbi_playbtn" aria-label="Play" aria-hidden="true" data-fa-processed="" data-prefix="fa" data-icon="play" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>            <img src="./Pipes, Forks, &amp; InputOutput_files/401025993_120346797839098_5904895580396522814_nthumb.jpg" alt="Watch me create this triangle accent wall! #homerenovation #accentwall" style="display: none;">
+        </a>
+    </div>
+</div><div class="sbi_item sbi_type_video" id="sbi_18026242945732512" data-date="1698712172">
+    <div class="sbi_photo_wrap">
+        <a class="sbi_photo sbi_imgLiquid_bgSize sbi_imgLiquid_ready" href="https://www.instagram.com/reel/CzCwfD3OD49/" target="_blank" rel="noopener nofollow" data-full-res="https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/397003372_353145943855537_8759006482774898264_nfull.jpg" data-img-src-set="{&quot;d&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/397003372_353145943855537_8759006482774898264_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=anGkUKz39RYAX9-i2ub&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfChdRCAPZtd6lz568Ao-M1XvGd5D4rKJT8zBwhBbvedbg&amp;oe=658D8AFB&quot;,&quot;150&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/397003372_353145943855537_8759006482774898264_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=anGkUKz39RYAX9-i2ub&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfChdRCAPZtd6lz568Ao-M1XvGd5D4rKJT8zBwhBbvedbg&amp;oe=658D8AFB&quot;,&quot;320&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/397003372_353145943855537_8759006482774898264_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=anGkUKz39RYAX9-i2ub&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfChdRCAPZtd6lz568Ao-M1XvGd5D4rKJT8zBwhBbvedbg&amp;oe=658D8AFB&quot;,&quot;640&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/397003372_353145943855537_8759006482774898264_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=anGkUKz39RYAX9-i2ub&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfChdRCAPZtd6lz568Ao-M1XvGd5D4rKJT8zBwhBbvedbg&amp;oe=658D8AFB&quot;}" style="height: 83.1063px; background-image: url(&quot;https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/397003372_353145943855537_8759006482774898264_nthumb.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <span class="sbi-screenreader">Instagram post 18026242945732512</span>
+            	        <svg style="color: rgba(255,255,255,1)" class="svg-inline--fa fa-play fa-w-14 sbi_playbtn" aria-label="Play" aria-hidden="true" data-fa-processed="" data-prefix="fa" data-icon="play" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>            <img src="./Pipes, Forks, &amp; InputOutput_files/397003372_353145943855537_8759006482774898264_nthumb.jpg" alt="Instagram post 18026242945732512" style="display: none;">
+        </a>
+    </div>
+</div><div class="sbi_item sbi_type_video" id="sbi_18085535836384596" data-date="1698690422">
+    <div class="sbi_photo_wrap">
+        <a class="sbi_photo sbi_imgLiquid_bgSize sbi_imgLiquid_ready" href="https://www.instagram.com/reel/CzCHChYu8yU/" target="_blank" rel="noopener nofollow" data-full-res="https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/398183470_354327903655070_999349180554940247_nfull.jpg" data-img-src-set="{&quot;d&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/398183470_354327903655070_999349180554940247_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=d9pzxSRqovYAX-e1LLi&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfAauAs0_-LxQT9qkV0jb82Z22MB1iTWuaq5yFoyb0pcdA&amp;oe=658CD665&quot;,&quot;150&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/398183470_354327903655070_999349180554940247_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=d9pzxSRqovYAX-e1LLi&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfAauAs0_-LxQT9qkV0jb82Z22MB1iTWuaq5yFoyb0pcdA&amp;oe=658CD665&quot;,&quot;320&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/398183470_354327903655070_999349180554940247_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=d9pzxSRqovYAX-e1LLi&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfAauAs0_-LxQT9qkV0jb82Z22MB1iTWuaq5yFoyb0pcdA&amp;oe=658CD665&quot;,&quot;640&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/398183470_354327903655070_999349180554940247_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=d9pzxSRqovYAX-e1LLi&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfAauAs0_-LxQT9qkV0jb82Z22MB1iTWuaq5yFoyb0pcdA&amp;oe=658CD665&quot;}" style="height: 83.1063px; background-image: url(&quot;https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/398183470_354327903655070_999349180554940247_nthumb.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <span class="sbi-screenreader">Instagram post 18085535836384596</span>
+            	        <svg style="color: rgba(255,255,255,1)" class="svg-inline--fa fa-play fa-w-14 sbi_playbtn" aria-label="Play" aria-hidden="true" data-fa-processed="" data-prefix="fa" data-icon="play" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>            <img src="./Pipes, Forks, &amp; InputOutput_files/398183470_354327903655070_999349180554940247_nthumb.jpg" alt="Instagram post 18085535836384596" style="display: none;">
+        </a>
+    </div>
+</div><div class="sbi_item sbi_type_image" id="sbi_18031766578573489" data-date="1694446692">
+    <div class="sbi_photo_wrap">
+        <a class="sbi_photo sbi_imgLiquid_bgSize sbi_imgLiquid_ready" href="https://www.instagram.com/p/CxDo0i6OMhv/" target="_blank" rel="noopener nofollow" data-full-res="https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/377251315_1509513599785913_4100193520739972917_nfull.jpg" data-img-src-set="{&quot;d&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/377251315_1509513599785913_4100193520739972917_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=QkThJMtFRnMAX_ltVkj&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfD7wqpIVRQkR_CJAPntTMbkQfFHCrPgeM3oUMibq8GNnA&amp;oe=658CFC63&quot;,&quot;150&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/377251315_1509513599785913_4100193520739972917_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=QkThJMtFRnMAX_ltVkj&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfD7wqpIVRQkR_CJAPntTMbkQfFHCrPgeM3oUMibq8GNnA&amp;oe=658CFC63&quot;,&quot;320&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/377251315_1509513599785913_4100193520739972917_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=QkThJMtFRnMAX_ltVkj&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfD7wqpIVRQkR_CJAPntTMbkQfFHCrPgeM3oUMibq8GNnA&amp;oe=658CFC63&quot;,&quot;640&quot;:&quot;https:\/\/scontent-sea1-1.cdninstagram.com\/v\/t51.29350-15\/377251315_1509513599785913_4100193520739972917_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=c4dd86&amp;_nc_ohc=QkThJMtFRnMAX_ltVkj&amp;_nc_ht=scontent-sea1-1.cdninstagram.com&amp;edm=ANo9K5cEAAAA&amp;oh=00_AfD7wqpIVRQkR_CJAPntTMbkQfFHCrPgeM3oUMibq8GNnA&amp;oe=658CFC63&quot;}" style="height: 83.1063px; background-image: url(&quot;https://www.rozmichelle.com/wp-content/uploads/sb-instagram-feed-images/377251315_1509513599785913_4100193520739972917_nthumb.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+            <span class="sbi-screenreader">endless blue 🌊</span>
+            	                    <img src="./Pipes, Forks, &amp; InputOutput_files/377251315_1509513599785913_4100193520739972917_nthumb.jpg" alt="endless blue 🌊" style="display: none;">
+        </a>
+    </div>
+</div>    </div>
+
+	<div id="sbi_load">
+
+	
+			<span class="sbi_follow_btn">
+        <a href="https://www.instagram.com/rozmichelle/" target="_blank" rel="nofollow noopener">
+            <svg class="svg-inline--fa fa-instagram fa-w-14" aria-hidden="true" data-fa-processed="" aria-label="Instagram" data-prefix="fab" data-icon="instagram" role="img" viewBox="0 0 448 512">
+	                <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+	            </svg>            <span>Follow on Instagram</span>
+        </a>
+    </span>
+	
+</div>
+
+	    
+	</div>
+
+</div></aside>
+                </div><!-- #second .widget-area -->
+
+                
+
+
+                
+                <div class="one-third" role="complementary">
+
+                    <aside id="sugarspice_social_widget-2" class="widget sugarspice_social_widget"><h3 class="widget-title"><span>Follow <em>me</em></span></h3>
+        <ul class="social">
+
+            <li><a href="https://www.facebook.com/rozmichelle" target="_blank" class="social-icon" title="Follow me on Facebook"><div class="icon icon-facebook"></div></a></li>
+            <li><a href="https://www.twitter.com/rozmichelle" target="_blank" class="social-icon" title="Follow me on Twitter"><div class="icon icon-twitter"></div></a></li>
+            
+            <li><a href="https://www.pinterest.com/rozmichelle/" target="_blank" class="social-icon" title="Follow me on Pinterest"><div class="icon icon-pinterest"></div></a></li>
+            <li><a href="https://www.instagram.com/rozmichelle" target="_blank" class="social-icon" title="Follow me on Instagram"><div class="icon icon-instagram"></div></a></li>
+            
+            
+            
+        </ul>
+
+		</aside><aside id="text-3" class="widget widget_text"><h3 class="widget-title"><span>2023 <em>Goals</em></span></h3>			<div class="textwidget"><p>To be an amazing mommy!</p>
+</div>
+		</aside>
+                </div><!-- #third .widget-area -->
+
+                
+                                
+
+                </div>
+
+            </div><!-- #prefooter -->
+
+                <footer id="footer" class="site-footer" role="contentinfo">
+
+            
+            <div class="site-info">
+
+                
+                Copyright © 2024 Roslyn Michelle Cyrus McConnell. All Rights Reserved.
+
+            </div><!-- .site-info -->
+
+        </footer>
+
+<!-- Instagram Feed JS -->
+<script type="text/javascript">
+var sbiajaxurl = "https://www.rozmichelle.com/wp-admin/admin-ajax.php";
+</script>
+<script id="code-prettify-js-before" type="text/javascript">
+var codePrettifyLoaderBaseUrl = "https:\/\/www.rozmichelle.com\/wp-content\/plugins\/code-prettify\/prettify";
+</script>
+
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/skip-link-focus-fix.js.download" id="sugarspice-skip-link-focus-fix-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/modernizr.min.js.download" id="modernizr-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/tinynav.min.js.download" id="tinynav-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/jquery.isotope.min.js.download" id="isotope-js"></script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/jquery.flexslider-min.js.download" id="sugarspice-flexslider-js"></script>
+<script defer="" type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/akismet-frontend.js.download" id="akismet-frontend-js"></script>
+<script type="text/javascript" id="sbi_scripts-js-extra">
+/* <![CDATA[ */
+var sb_instagram_js_options = {"font_method":"svg","resized_url":"https:\/\/www.rozmichelle.com\/wp-content\/uploads\/sb-instagram-feed-images\/","placeholder":"https:\/\/www.rozmichelle.com\/wp-content\/plugins\/instagram-feed\/img\/placeholder.png","ajax_url":"https:\/\/www.rozmichelle.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Pipes, Forks, &amp; InputOutput_files/sbi-scripts.min.js.download" id="sbi_scripts-js"></script>
+        <script>     
+       
+        jQuery(document).ready(function($) {   
+            $('.widget-title').each(function() {
+                var $this = $(this);
+                $this.html($this.html().replace(/(\S+)\s*$/, '<em>$1</em>'));
+            });
+            $('#reply-title').addClass('section-title').wrapInner('<span></span>');
+            
+            if( $('.flexslider').length ) {
+                $('.flexslider').flexslider({ directionNav: false, pauseOnAction: false, });
+                $('.flex-control-nav').each(function(){
+                    var $this = $(this);                
+                    var width = '-'+ ($this.width() / 2) +'px';
+                    console.log($this.width());
+                    $this.css('margin-left', width);
+                }); 
+            }
+            
+            $("#nav").tinyNav({header: 'Menu'});
+        });
+        </script>
+      
+
+<script src="./Pipes, Forks, &amp; InputOutput_files/classie.js.download"></script>
+<script src="./Pipes, Forks, &amp; InputOutput_files/cbpAnimatedHeader.js.download"></script>
+
+
+</body></html>

@@ -1,0 +1,6 @@
+﻿  coding.cpp
+E:\Owl___\Practice\Practice\coding.cpp(25,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  E:\Owl___\Practice\Practice\coding.cpp(25,9):
+  consider using '%zd' in the format string
+  
+  Practice.vcxproj -> E:\Owl___\Practice\x64\Debug\Practice.exe

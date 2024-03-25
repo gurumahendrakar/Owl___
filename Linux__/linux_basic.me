@@ -1,0 +1,225 @@
+# Install VirtualBox ( Install Ubuntu Or Kali Linux )
+
+
+
+#---------------- Working With Linux Operting System ----------------
+	 
+
+	~  Connect To Windows Machine To Linux Server 
+		
+		~ Linux Machine
+
+			# 1 Step 
+			~ Shared Local Machine Folders 
+				~ Go VirtualBox Machine Settings
+					~ Select ShareD Folders ( Chooose Files )
+				> cd  /media
+				> sudo apt install virtualbox-guest-utils
+				> mkdir guestFolder
+				> sudo mount -t vboxsf sharedFolderName ~/guestFolder
+				> cd guestFolder ( Your Folder Was Here ) 
+			# 2nd Step 					
+			~ Open Terminal 
+				
+				> ifconfig  ( inet 192.168.54  )  # Showing To Ip Address 
+				> clear
+			
+			~ Set The DNS SERVER
+				
+				> echo 8.8.8.8 > /etc/resolv.conf
+			
+			# 3rd Step 
+			~ Putty Terminal
+				> ssh -X -p 22 gurumahendrakar@192.168.1.13 ( Trying Connect To The Machine )
+				
+				
+
+		~ Working With Linux Operating System * 
+			> date 
+			> pwd  ( show your working directory )
+			> cat text.txt  ( showing your content in terminal )
+			> touch hello.sh ( creating a file )
+			> chmod 777 hello.sh ( Executed Privillage )
+			> clear ( clearing the terminal )
+			
+			~ Working With Directories  +
+				
+				> cd /
+				> cd $Home ( /home/($username )
+				> df -h ( Showing Storage Details Etc. ) 
+				> cd ..  ( Back Current Directory )
+				> cd ./  ( Current Directory )
+
+
+
+		~  User Management  *
+			
+			~ Group Creating  +
+				> groupadd newgroup
+				> cat /etc/group  -> ( Contains Information How Many Groups )
+				> groupmod -g 801 newgroup  ( Changing The GroupID )
+				> groupmod -n modifiedgroup newgroup ( groupmod -n change_name current_name )
+
+
+
+			~ Creating Users  + 
+				> whoami
+				> useradd guru
+				> passwd guru - > Set The Password
+				> id guru
+				> id ( you will current user information )
+				> useradd -g sudents test5 (User Created With Attching Group )
+				> cat /etc/shadow ( Check all users )
+				> cat /etc/passwd ( Check All User Password With Hashing )
+				> usermod -g students guru
+				> usermod -d /home/owl__  guru  ( /home/owl__  home directory )
+				> usermod -G test guru  ( Appending Group )	
+				> sudo deluser ($user)
+
+			~ Check Login Activites  + 
+				
+				> who
+				> w 
+				> last ( Showing Boot Time  & UserLogin Time  All Users )
+				> last ($username)  ( showing Boot Time & UserLogin Time Selected User )
+				> lastb  ( Failed Login Shows Users Here )
+			
+	
+		~ Password Management * 
+
+			> sudo passwd ($username) -> ( Set The New Password )
+			> passwd -> (current user changing password )
+			> chage -l ($username)  -> ( giving you password expire information )
+			> chage -M 30 test ( Every 30 Days User Change The Password )
+		
+		
+		
+		~ process Management *
+			
+			> ps  ( Current Processes Information )
+			> ps -ef ( All Process Running On Operating Sytem )
+			> ps -ef | grep -i "guru" ( -i means case insensitive )
+			> kill $( process id )
+			> kill -9 ($process id ) Immdately Terminate
+			> ps -eo pid,ppid,cmd,%mem,%cpu ( Selected Columns Are Given )
+				
+				UID          PID    PPID  C STIME TTY          TIME CMD
+				root           1       0  0 18:44 ?        00:00:00 /sbin/init
+				root           2       1  0 18:44 ?        00:00:00 /init
+		
+			> ps -eo pid,ppid --sort=%mem  ( sorting with %mem usage )
+			> ps -eo pid,ppid,uid --sort="%mem,pid" 
+			
+ 
+		
+		~ grep Usages *
+	
+		
+			#  i - ( case insentive )  ::: # -e  ( Give Me String Pattern Line )  ::: # -v ( string match doesn`t give )
+			
+			> ps -ef | grep -i -e "guru" 
+			> ps -ef | grep -i -e -v "guru"
+	
+
+		~ Directory Management * 
+			
+			
+			_ rwx    rwx    rwx
+			d ---	 ---	---
+			f owner  group  all users 
+
+
+					# Unix Uses Inverted Directory System 
+
+					
+			( / ) - > That`s Called Root 
+			
+			( ./ )  - > That`s Call Relative 
+			
+			( /home/guru/ )  -> ( / ) StartsWith (/ or ~ ) That`s Called Absolute Path 
+
+			# mkdir  -  use for directory create
+			# touch  -  use for file create 
+			# rm     -  use for file
+			# rmdir  - use for directory 
+			
+			
+			> mkdir /home/guru    -> Create The Folder in Root Point 
+			> mkdir  something    -> Create Folder In Current Directory
+			> mkdir -p tree/subtree -> No Matter Folder Have Or Not Pattern Wise That`s create it 
+			> rmdir something
+			> rm text.txt
+			> cp $(source) $(destination)
+			> mv $(source) $(destionation)
+			> rm -rf $(directory)  ->   -rf recursive files delete in directory and remove directory
+						
+			
+			
+			
+		~ File Management *
+			
+			# Read It **
+			# 	.hiddden  ( startsiwth (.) Thats Files Are Hiddens )
+
+			
+			> touch $(filename)  <> Creating File 
+			> vim $(filename) -> writing file ::: exit --> Click  (Shift->:->wq) write &  quit
+			> ls   -> Show Files 
+			> ls -l   -> show files With Other Information
+			> ls -la -> show files with other information with hidden files
+			> ls -laS -> Sort the Files 
+		
+
+		~ Shell Management  * 
+
+			> echo $SHELL
+			> echo $0 
+			> env -> Show The All Enviornment Variables
+			> printenv $(key)
+		
+	
+		
+	      ~  Genreal Administrator *
+			# stdin 0
+			# stdout 1 
+			# stderr 2
+			
+
+			> w  -> ( How Many Hardwares Was Usage with Users)
+			> uptime  -> how many times actively working 
+			> ls -l 1> ls.log  2> ls.err
+			> ls -l > result.log 2>&1
+			
+	    ~ Vim Editing
+		
+		> Esc + qw  ( Write & Quit )
+		> Esc + q! or qw! ( Write Forcefully or quit forcefully )
+		> Esc + /G -> Go to end line
+		> Esc  + :5 -> Go To Line Number
+		> Esc + /guru -> Serach The Pattern
+		> n -> Start  Pattern Follwing
+		> N -> End Pattern Following
+		> Esc + x -> after the cursor delete letter
+		> Esc + X -> before the cursor delete letter
+		> Esc + dw -> delete a word
+		> DD  -> Delete Full line
+		> Esc + set nu -> each row have number
+	
+	~ Shell Scripting  * 
+	
+		> vim shell.sh
+			
+			name="Guru"
+			read sirname
+			echo $name
+			echo $sirname
+			echo `date`  -> `` -> under commands are execute
+			if [ $name == "Guru" ]
+			then 
+			echo "succuss"
+			else 
+			"not succuss"
+
+`		> nohup ./shell.sh  ( run in background output save nohup.out )
+		> chmod 777 shell.sh
+					

@@ -1,0 +1,77 @@
+~ RSTP * 
+
+	> spanning-tree mode rstp-pvst
+	
+	
+
+	~ Portfast Configure
+		> int g0/1
+		> spanning-tree portfast
+	~ Bpdu Guard & Bpdu Filter
+			
+		BpduGuard  -> Any BPDU Received On The Port Shutdown The port
+		BpduFilter -> block ports sending bpdu (saves bandwidth)
+		
+
+		> int  g0/0 
+		> spanning-tree bpduguard enable
+		
+
+
+		> int g0/1
+		> spanning-tree bpdufilter enable 
+		
+
+		> spanning-tree portfast bpdufilter enable
+
+~ EtherChannel *
+	
+	> show etherchannel load-balance  
+	
+		::: Showes The Which Protocol Use To Load Balaceing.
+			Example ->  src-mac,src-ip,des-ip,src-dst-mac etc.
+
+		::: Protocol Lists 
+			
+			> port-channel load-balance ?
+	> en
+	> conf t
+	> port-channel load-balance src-dst-mac
+	> do show etherchannel load-balance
+
+
+
+	pAgp -> Cisco propritery protocol
+	lAcp -> Standardize Protocol
+	
+			
+	> show interfaces g0/0 | inclue rate
+	> do show etherchannel summary 
+
+
+	~ PAgp * 
+		> channel-protocol PAgp
+		> interface range g0/0-3
+		> channel-group 1 mode ?
+		> channel-group 1 mode desireable 
+		
+			Read:: That`s Create Virtual interfaces With ( 3 Interfaces )
+		
+			:: auto + auto = no EtherChannel 
+			:: desirable + auto = EhterChannel
+			:: desirable + desirable = EtherChannel
+		
+	~ LAgp *
+		
+		> channel-group 1 mode ?
+		> channel-group 1 mode active
+			
+			:: passive + passive = no EhterChannel
+			:: active + passive = EhterChannel
+			:: active + active = EhterChannel
+		
+		> channel-protocol ?
+			lAgp prepare interface for lAcp protocol
+			pagp interface for pAgp Protocol
+
+     		> channel-protocol lagp

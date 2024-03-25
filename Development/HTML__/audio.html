@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+   <!-- 
+
+        Figure:: 
+            ->    __________________________
+                |                        |
+                |                        |
+                |                        |
+                |                        |
+                |         
+                |                        |
+                |                        |
+                |                        |
+                |________________________|
+                |                        |
+                |    fig caption         |
+                __________________________
+    -->
+
+    <!-- 
+
+        ::audio 
+            ->  controls  ::  ( Controls Buttons Are On By Default Off ) 
+            -> autoplay not works
+            
+     -->
+     <input 
+        type="file"
+        accept="image/*,vidoe/*,audio/*"
+        capture
+    >
+    <figure>
+        <figcaption>Bande Hai Hum Uske</figcaption>
+        <audio
+            controls
+            autoplay
+            muted
+            preload="none"
+            controlslist = "nodownload nofullscreen noremoteplayback noplaybackrate foobar"
+            >
+            <source src="./Bande Hain Hum Uske Dhoom 3 128 Kbps.mp3" type="audio/mp3">
+        </audio>
+    </figure>
+</body>
+</html>

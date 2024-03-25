@@ -1,0 +1,26 @@
+
+IMP :::
+	enum
+	(take byte in container)
+	structs 
+	union
+
+
+
+::READ ____
+	
+	(Union :: Shares Memory )
+
+	AL-> Register Take 8-bit In This Pointer
+		int num = 1
+		*((char *) &num) 
+	printf("%AL (Register)") #JUSt Imgine Like This
+
+
+::READ Memory Leaks ____
+	#libary :: <crtdbh.h>
+
+	_CrtDumpMemoryLeaks();
+
+
+

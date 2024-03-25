@@ -1,0 +1,21 @@
+     1                                  [ org 0x0100 ]
+     2 00000000 EB0E                    jmp start
+     3 00000002 1900                    data: dw 25
+     4                                  change_data:
+     5 00000004 55                      	push bp;
+     6 00000005 89E5                    	mov bp,sp
+     7 00000007 B80100                  	mov ax,1
+     8 0000000A BB0200                  	mov bx,2
+     9                                  	
+    10 0000000D 58                      	pop ax
+    11 0000000E 5B                      	pop bx
+    12 0000000F C3                      	ret
+    13                                  start:
+    14 00000010 B80300                  	mov ax,3
+    15 00000013 BB0400                  	mov bx,4
+    16 00000016 50                      	push ax
+    17 00000017 53                      	push bx
+    18 00000018 E8E9FF                  	call change_data
+    19                                  end:
+    20 0000001B B8214C                  mov ax,0x4c21
+    21 0000001E CD21                    int 0x21

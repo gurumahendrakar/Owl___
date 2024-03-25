@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+*::before,*::after{
+    box-sizing: inherit;
+    margin-top: -4px;
+}
+
+
+:root{
+    font-size: 62.5%;
+}
+
+h1{
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+li:hover{
+    cursor: pointer;
+    text-decoration: underline 0.2rem solid rgb(255, 255, 255);
+}
+
+h1:hover,h2:hover{
+    cursor: pointer;
+    text-decoration: underline 0.2rem solid rgb(28, 35, 97);
+    
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 5rem 0rem;
+    text-align: center;
+}
+
+p{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+
+nav{
+    display: flex;
+    align-items: center;
+    background: white;
+    position: fixed;
+    width: 100%;
+    height: 7em;
+    top: 0px;
+}
+
+
+nav::after{
+    content: "";
+    display: inline-block;
+    background:  rgb(29, 4, 4);
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;    
+    z-index: 0;
+}
+
+#LOGO{
+  
+    font-size: 2em;
+    text-align: center;
+    width: 50%;
+
+}
+
+#LOGO::after{
+    content: "Brand";
+    background: rgb(239, 89, 89);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: saturate(10);
+}
+
+
+.NavigationLinksUL{
+    display: flex;
+    column-gap: 2em;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 500;
+    width: 50%;
+    color : white;
+    margin-left: auto;
+    z-index: 1;
+}
+
+header{
+    position: relative;
+    padding-top: 7em;
+}
+
+
+#MovingArrow{
+    background: rgb(19, 20, 18);
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    clip-path: polygon(40% 33%, 41% 49%, 100% 48%, 100% 65%, 42% 66%, 41% 86%, 1% 58%);
+    animation-name: ArrowMove;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+.HeaderShoeDiv{
+    position: relative;
+    left: 50%;
+    width: 50%;
+    height: 40vw;
+}
+
+.HeaderDescriptionDiv{
+    padding: 1rem;
+    width: 50%;
+}
+
+
+
+
+.HeaderShoe{
+    object-fit: cover;
+    width: 100%;
+    animation-name: slide-down;
+    animation-duration:  2s;
+    animation-fill-mode: forwards;
+}
+
+
+
+.ShoesCollections{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5rem;
+}
+
+.ShoeIntroBox{
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+    margin : auto;
+    width: 95%;
+    height: 40rem;
+    overflow: hidden;
+}
+
+
+.ShoeIntroImgDiv{
+    border-radius: 1rem;
+    overflow: hidden;
+    order: 2;
+}
+
+.ShoeIntroImg{
+    height: 100%;
+    object-fit: cover;
+    animation-name: slide-down;
+    animation-duration:  2s;
+
+}
+
+.ShoeIntroDescriptionDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    max-width: 30rem;
+}
+
+.MobileMenuBarDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.5rem;
+    border-radius: 10%;
+    width: 4rem;
+    height: 4rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    display: none;
+}
+
+.bar{
+    display: inline-block;
+    border-radius: 20%;
+    width: 3rem;
+    height: 0.5rem;
+    background: rgb(78, 29, 29);
+}
+
+footer{
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 0.5rem;
+    padding: 5rem 0rem;
+    text-transform :uppercase;
+    margin-top: 5rem;
+}
+
+
+
+@keyframes slide-down{
+    from{
+        height : 0%;
+    }
+
+    to{
+        height : 100%;
+    }
+}
+
+
+
+
+
+@keyframes ArrowMove {
+    from{
+        transform: rotate(270deg);
+    }
+    to{
+        background: rgb(195, 195, 213);
+        transform: rotate(270deg) translateX(100%);
+    }
+    
+}
+
+
+
+@media screen and (max-width : 700px) {
+
+    .HeaderDescriptionDiv{
+        width: 100%;
+    }
+
+    .HeaderShoeDiv{
+        position: static;
+        width: 100%;
+        height: 60vh;
+    }
+
+  
+
+    .MobileMenuBarDiv{
+        display: flex;
+    }
+    
+    .NavigationLinksUL{
+        flex-direction: column;
+        justify-content: start;
+        row-gap: 2rem;
+        background: rgb(5, 3, 3);
+        color: white;
+        font-size: 2rem;
+        position: fixed;
+        padding: 2rem;
+        padding-top : 5rem;
+        top: 0px;
+        left: -50%;
+        height: 100%;
+        width: 50%;
+        transform-origin: left;
+        transition-duration: 1s;
+    }
+    nav::after{
+        display: none;
+    }
+
+    
+
+    .HeaderDescriptionDiv{
+        background: rgba(10, 2, 2);
+        color: white;
+        padding : 3rem 1rem;
+    }
+
+    .ShoeIntroDescriptionDiv{
+        width: 50%;
+    }
+
+    .ShoeIntroImgDiv{
+        width: 50%;
+    }
+
+
+   
+
+
+
+
+
+}
+
+
+
+@media screen and (max-width : 350px) {
+
+    
+    h2{
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+
+
+    .ShoeIntroBox{
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .ShoeIntroImg{
+        width: 100%;
+
+    }
+    .ShoeIntroImgDiv{
+        width: 100%;
+        order: 0;
+
+    }
+
+    .ShoeIntroDescriptionDiv{
+        width: 100%;
+    }
+
+
+    .NavigationLinksUL{
+        font-size: 1.5rem;
+    }
+
+
+
+
+}

@@ -1,0 +1,18 @@
+total 102
+drwxrwxrwx 1 guru guru   512 Mar 20 18:11 .
+drwxrwxrwx 1 guru guru   512 Mar 18 15:18 ..
+-rwxrwxrwx 1 guru guru 12288 Mar 20 18:11 .RedirectOutputCustomFile.c.swp
+-rwxrwxrwx 1 guru guru 12288 Mar 20 11:34 .fifo.c.swp
+-rwxrwxrwx 1 guru guru 12288 Mar 19 17:42 .fork.c.swp
+-rwxrwxrwx 1 guru guru 12288 Mar 20 11:34 .pipe.c.swp
+-rwxrwxrwx 1 guru guru   479 Mar 20 18:11 RedirectOutputCustomFile.c
+-rwxrwxrwx 1 guru guru   567 Mar 13 21:53 Stack.c
+-rwxrwxrwx 1 guru guru  1529 Mar 20 17:01 TwoWayCommunication.c
+-rwxrwxrwx 1 guru guru 16288 Mar 20 18:11 a.out
+-rwxrwxrwx 1 guru guru   177 Mar 19 23:02 coding.c
+-rwxrwxrwx 1 guru guru   659 Mar 20 14:35 fiforead.c
+-rwxrwxrwx 1 guru guru   496 Mar 20 14:37 fifowrite.c
+-rwxrwxrwx 1 guru guru   820 Mar 20 11:33 pipe.c
+-rwxrwxrwx 1 guru guru   531 Mar 20 17:39 process.c
+-rwxrwxrwx 1 guru guru  2542 Mar 20 16:07 read.me
+-rwxrwxrwx 1 guru guru    11 Mar 20 18:05 stdout.out

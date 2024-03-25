@@ -1,0 +1,261 @@
+
+			( IMP - Please linux_basic.me Before This Started )
+
+
+
+#------------------------------------------Part 1 ------------------------------------------------
+				 (COMMNAD LINES ARGUMENTS)
+	
+			
+# Linux (CMD) LINE **************
+	
+	> echo $(text) 	 --> 	Stream Write In Stdout
+	> which ls	 -->	show current_directory 
+	> name=guru	 --> 	create variable and assign "guru" 
+	> /usr/bin/ls	 -->   	runs the command 
+	> cat ./bash_histry -->  previous commands stores here 
+	> history  	--> 	shows previous histories
+	> echo $PATH  	-->	( Your Commands File Searchs Here )
+
+
+# Envoirnment Set && Unset **********
+	
+	> name=guru
+	> set 			::: (set variables show here) (use greb for your variable )
+	> export name
+
+
+# Process (CMD) LINE ****************
+
+
+	> ps -f 	--> 	( Show Parent Child Process )
+	> ps -ef	-->	( Show All Process ) 	
+
+
+ # echo ( double quotes and signle quotes ) ********
+
+        > ' Hello $USER '               -->     ( Only $(env) Variables Are Execute Now Work Commands )
+        > " Hello `date` "              -->     ( Inside You Can Execute Commands )
+
+
+# Pipes ****************************
+
+
+        > ls | sort
+        > ls | sort -r
+        > ls | sort -r | reversed
+        > ls | sort -r | tee reversed | wc -l
+        > echo one two three | xargs mkdir
+        > ls a* | args -p rm
+
+
+#Basic File Management ************************
+---------------------------------------------Part 2-----------------------------------------------	
+	Absloute Path -->  ( Startswith / )
+	Relative Path --> ( No StartWith / )
+		
+	::: Relative --->    ( ./file , file , ../file, ~ );
+		
+	
+
+	> pwd  --->  ( current working directory )
+	> ls    /home
+	> ls  a* 	--->   	( startswith )
+	> ls  *a 	--->	(  endswith   )	
+	> ls  *a* 	--->  	( startswith & endswith )
+	> ls [abc] 	---> 	( match under the characters )
+	> cp $(source) $(destination) ---> ( copy files )
+	> mv $(source) $(destination) ---> ( moving file destination )
+	> rmdir 	---> 	( remove directory )
+	> rmdir -rf 	---> 	( recursive delete )
+	> mkdir -p 	---> 	( create a multiple directries in signle path )
+	> mkdir -v  	---> 	( -v actual what`s Going On) 
+	
+------------------------------------------  2   -------------------------------------------------
+	# Archiving *******
+
+
+		::::READ TAR  --
+			  -c (create)
+			  -t (showing under the files)
+			  -x (extract)
+			  -f (filename)
+			  -z (zip)
+			  -v (verbose -> what are doing )
+          	
+		::: Backup Files --
+		          dd : --> ( used for backing up and creating files )
+       		          if=<file> of=<$filename> bs=<blocksize> count=<number>
+
+
+		::::READ CIPO  --
+			CPIO  ---> create a real archive by sending files to cpio as STDIN
+			-i ( extract data from a cpio file stdin )
+			-d ( used in combination with -i to extract directory structure as well )
+			-o ( create an archive )
+			-t ( list table contents of a cipo file )
+			-v ( verbose mode )
+
+
+		> find / 		---> ( showing recursive all files )
+		> tar zcvf files.tar .	---> ( zip files current directory )
+		> tar xvf files.tar 	---> (extract files)				
+
+		
+		> find . | cpio -ov files.cpio	
+		> cpio -tv < files.cipo 
+		
+	
+	
+--------------------------------------------  3 ------------------------------------------------
+		::::READ 
+			
+
+			Path -----
+				    (criteria)
+				-name $(filename)
+				-user $(username)
+				-size  +1M OR -1M  ----> (Greater Than and Smaller Than) 
+				-type  f OR D  	  -----> ( f - file or d - directory )
+				
+
+			       	      (action)
+				-print
+				-delete
+				-ok 
+				-ls 
+				-exec
+	
+		> find $(path) ---> ( show files every folder files with recursively )
+		
+
+	
+		:::READ   (GZip ) --> ( Use For Combine File Reduce Files Size ) 
+
+			>  gzip $filename
+			>  unzip $filename
+			>  gzip -c $filename > files.tar ---> (output redirection one file to file.gzp )
+
+
+		> file . --> ( show which type this ) --> means ( files or directory )
+
+
+
+--------------------------------------Finish Part 2 -----------------------------------------------
+
+
+
+-------------------------------------------Part 3------------------------------------------------
+
+				  ( Hardlinks and Symbolic Links )
+
+		TOPics : -
+
+			- what are hardlinks
+			- links vs. copying 
+			- what are symbolic links 
+			- inodes and file systems
+
+		
+		:::READ --> 
+			
+			INODE 
+			
+			DATABLOCKS	----> Every File Have 3 Collection Of Blocks;  
+
+			NAME 
+
+
+
+ 			hello.txt ---> 3MB 
+				
+				
+			     (INODE)
+			         |
+			         |
+			         |
+			 	/|\
+			       / | \
+                              /  |  \
+			     1MB 1MB 1MB --> ( 1MB BLOCKS )
+
+
+			INODE --> some 200+ bytes vares per file system file
+				-type ( whichtype)
+				- size ( filesize)
+				- uid  (userid)
+				- gid  ( groupid)
+				- permission ( read write execute )
+				- atime  ( access time )
+				- mtime  ( modified time )
+				- ctime  ( change time) )
+				- linkcount ( how many files links to indoe )
+
+				( the name is not in the inode )
+				(inode  contains pointer to datablocks )
+			
+				
+				- contains the properties of the file 
+				
+
+			
+			file 
+			
+			file1	--->  ( inode ) ---> all files copys of inode 
+	
+			file2 
+
+
+			ln $(source) $(destination) ---> succussully inode copied 
+				__ hardlinks
+			
+			ln -s $(source) $(destination) --> only referce to another another file 
+				-- symbolic links 
+
+			
+			find / -inum $(inodenumber) 2> /dev/null 
+			
+			
+		
+#----------------------------------------- finish part 3 ----------------------------------------
+
+
+
+
+#-------------------------------------------- part 4 --------------------------------------------
+
+					( Streams )
+
+
+
+		> cat $(filename) ---> (showing you the content of the file)
+		> tac $(filename) --> (reversing content and showing the file)
+		
+		
+	
+		> more $(filename) --> (showing content only page by page) 
+		> less $(filename) --> (showing content page by page and switch to line number)
+
+		> head -n 5 ---> ( that`s return starting 5 lines in your file )
+		> tail -n 5 ---> ( that`s return ending 5 lines in your file )
+
+
+		> head -n 1 | cut -d : -f 7   
+		> cut -c 28-34 
+		> cut -d : -f 7
+		options-
+			
+			-c = select only these characters 
+			-d = ( which element to split ) 
+			-f = ( after the cut select index )
+			
+			
+		> sort 
+		options:
+			
+			-i = ignore case
+			-k = sort via key
+			-n = numeric sort
+			-r = reverse sort
+		
+		> 	
